@@ -7,4 +7,6 @@ class Spaceship < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, :address, :city, :country, :country, presence: true
   validates :capacity, presence: true, numericality: { only_integer: true }
+
+  mount_uploader :image, PhotoUploader
 end
