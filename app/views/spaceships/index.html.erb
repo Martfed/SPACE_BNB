@@ -1,22 +1,8 @@
 <h1>Spaceships#index</h1>
 <p>Find me in app/views/spaceships/index.html.erb</p>
-<ul>
-  <% @spaceships.each do |spaceship| %>
-    <li><%= spaceship.name %></li>
-    <li><%= spaceship.description %></li>
-    <li><%= spaceship.address %></li>
-    <li><%= spaceship.city %></li>
-    <li><%= spaceship.country %></li>
-    <li>**************************</li>
-  <% end %>
-</ul>
 
-<%= simple_form_for Spaceship.new, url: new_user_spaceship_path do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :country %>
-  <%= f.input :city %>
-  <%= f.input :address %>
-  <%= f.input :user_id, as: :hidden, :value "#{current_user}" %>
-  <%= f.button :submit %>
+
+
+<% if user_signed_in? %>
+  <%= render "form" %>
 <% end %>
