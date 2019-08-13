@@ -1,6 +1,6 @@
 class SpaceshipsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_spaceship, only: [:show]
+  before_action :set_spaceship, only: [:show, :edit, :update]
 
   def index
     @spaceships = Spaceship.all
@@ -24,6 +24,12 @@ class SpaceshipsController < ApplicationController
   end
 
   def update
+    @spaceship.update(spaceship_params)
+    if @spaceship.save
+      redirect_to user_spaceships_path
+    else
+      raise
+    end
   end
 
   def destroy

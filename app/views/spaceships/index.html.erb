@@ -27,5 +27,6 @@
 </div>
 
 <% if user_signed_in? %>
-  <%= render "form" %>
+  <%= link_to "Add a ship", new_user_spaceship_path(current_user) %>
+<!--    render "form" %> -->
 <% end %>
