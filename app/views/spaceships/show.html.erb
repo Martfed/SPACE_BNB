@@ -16,4 +16,10 @@
    <h2>Address</h2>
   <p>GOOGLE MAPS MAP</p>
 
+  <%= link_to "Back", root_path, class: "btn btn-main" %>
+  <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
+  <%= link_to "Delete", user_spaceship_path(current_user, @spaceship), method: :delete,
+      data: { confirm: "Are you sure?" }, class: "btn btn-main" %>
+
+
  </div>
