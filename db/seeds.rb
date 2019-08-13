@@ -5,5 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+<<<<<<< HEAD
+require 'faker'
+
+50.times do
+  Country.create(name: Faker::Address.country)
+end
+=======
 # spaceship1 = Spaceship.new(name: 'The Mandalorian Arrow', description: "It's a super shiny nice ship yo", address: 'Cantersteen 18', city: "Brussels", country: "Belgium", capacity: 38)
 # spaceship1.save
+>>>>>>> master
