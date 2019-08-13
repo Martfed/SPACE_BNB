@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_145853) do
+ActiveRecord::Schema.define(version: 2019_08_13_070150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,17 +50,15 @@ ActiveRecord::Schema.define(version: 2019_08_12_145853) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "species"
     t.string "email"
-    t.string "payment_info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "bookings", "spaceships"
-  add_foreign_key "bookings", "users"
   add_foreign_key "reviews", "bookings"
-  add_foreign_key "spaceships", "users"
 end
