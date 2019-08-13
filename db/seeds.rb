@@ -22,6 +22,3 @@ country_list.each do |country|
 end
 
 puts "Finished"
-
-# spaceship1 = Spaceship.new(name: 'The Mandalorian Arrow', description: "It's a super shiny nice ship yo", address: 'Cantersteen 18', city: "Brussels", country: "Belgium", capacity: 38)
-# spaceship1.save
