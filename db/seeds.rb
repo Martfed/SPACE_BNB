@@ -53,12 +53,13 @@ images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708332/spaceship02_elh8or.jpg',
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708334/spaceship06_dszz5r.jpg'
 ]
+
+names = ['Milennium Falcon', 'Space Shuttle', 'The Mandalorian Arrow', 'Schiaparelli', 'Corvette', 'Enterprise', 'T-wing', 'Federican Pooface', 'Frankurian Rocket', 'Emoji Carriage']
 i = 0
 
 10.times do
-  i += 1
   spaceship = Spaceship.create(
-    name:          Faker::TvShows::TheExpanse.ship,
+    name:          names[i],
     description:   fake_description,
     address:       Faker::Address.street_address,
     city:          Faker::Address.city,
@@ -69,6 +70,7 @@ i = 0
   spaceship.user = users.sample
   spaceship.remote_image_url = images[i]
   spaceship.save
+  i += 1
 end
 
 puts "Pulling bookings out of my ass..."
