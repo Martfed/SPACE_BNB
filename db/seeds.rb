@@ -1,3 +1,5 @@
+require 'json'
+# require 'faker'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,8 +8,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require 'faker'
+puts 'Deleting all countries...'
+Country.destroy_all
 
-50.times do
-  Country.create(name: Faker::Address.country)
+puts 'Reading JSON file...'
+
+countries = File.open('./countries.json', 'r')
+country_list = JSON.parse(countries)
+
+puts "Creating countries..."
+country_list.each do |country|
+  Country.create(name: country.name)
 end
+
+puts "Finished"
