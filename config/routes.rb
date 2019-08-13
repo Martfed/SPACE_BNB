@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :spaceships, only: [:index, :new, :edit, :show, :create, :destroy] do
       resources :reviews
-      resources :bookings, only: [:index, :new, :edit]
+      resources :bookings, only: [:index, :new, :edit, :create]
     end
     resources :bookings, only: [:index]
   end
