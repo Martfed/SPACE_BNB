@@ -1,8 +1,7 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <p>SpaceBNB</p>
-    <% end %>
+    <p><%= image_tag "logo" %> SpaceBNB</p>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,6 +27,9 @@
       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Register", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>
