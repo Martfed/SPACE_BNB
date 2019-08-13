@@ -2,25 +2,14 @@
 <p>Find me in app/views/spaceships/index.html.erb</p>
 
 <div class="cards">
-  <% 6.times do %>
-    <div class="card spaceship-card-small" style="width: 18rem;">
-      <%= image_tag "logo", class: "card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title">The Mandalorian Arrow</h5>
-        <p class="card-text">Fast cargo ship</p>
-        <p class="card-text price">€5000/d</p>
-      </div>
-    </div>
-  <% end %>
-</div>
-<div class="cards">
   <% @spaceships.each do |spaceship| %>
     <div class="card spaceship-card-small" style="width: 18rem;">
-      <%= cl_image_tag spaceship.image %>
+      <div class="card-img-top" style="background-image: url(<%= cl_image_path spaceship.image, height: 200, crop: :fill %>)">
+      </div>
       <div class="card-body">
         <h5 class="card-title"><%= spaceship.name %></h5>
-        <p class="card-text"><%= spaceship.description %></p>
-        <p class="card-text price"><%= spaceship.price %>/d</p>
+        <p class="card-text"><%= spaceship.city %></p>
+        <p class=" price"><%= spaceship.price %>/d</p>
       </div>
     </div>
   <% end %>

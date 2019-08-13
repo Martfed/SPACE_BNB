@@ -1,4 +1,6 @@
 .card {
+  width: 300px;
+  height: 300px;
   border-radius: 10px;
   margin: 10px;
   box-shadow: 2px 2px 20px black;
@@ -6,8 +8,8 @@
 
 .card-img-top {
   height: 200px;
+  border-radius: 10px 10px 0px 0px;
 }
-
 .card-body {
   position: relative;
   background-color: $dark;
@@ -16,6 +18,9 @@
 }
 
 .card-text {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
   font-size: 1em;
   font-weight: 300;
   margin: 0;
@@ -26,4 +31,5 @@
   font-weight: 500;
   right: 10px;
   bottom: 10px;
+  margin: 0;
 }
