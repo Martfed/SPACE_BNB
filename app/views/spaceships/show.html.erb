@@ -7,19 +7,28 @@
  </div>
 
  <div class="container">
-  <h1>@spaceship.name</h1>
-  <p>Capacity: @spaceship.capacity</p>
+  <h1><%= @spaceship.name %></h1>
+  <p>Capacity:<%= @spaceship.capacity  %></p>
 
    <h2>Description</h2>
-  <p>@spaceship.description</p>
+  <p><%= @spaceship.description  %></p>
 
    <h2>Address</h2>
   <p>GOOGLE MAPS MAP</p>
+
+
+  <% if user_signed_in? %>
+    <h3>Booking</h3>
+    <%= simple_form_for([current_user, @spaceship, Booking.new]) do |f| %>
+      <%= f.input :start_date, as: :date, html5: true  %>
+      <%= f.input :end_date, as: :date, html5: true  %>
+      <%= f.button :submit %>
+    <% end %>
+  <% end %>
 
   <%= link_to "Back", root_path, class: "btn btn-main" %>
   <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
   <%= link_to "Delete", user_spaceship_path(current_user, @spaceship), method: :delete,
       data: { confirm: "Are you sure?" }, class: "btn btn-main" %>
-
 
  </div>
