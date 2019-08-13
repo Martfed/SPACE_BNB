@@ -41,7 +41,22 @@ puts "Creating spaceships..."
 users = User.all
 countries = Country.all
 
+images = [
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708314/spaceship08_jdzyvm.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708313/spaceship07_iaioks.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708314/spaceship10_hdbqbc.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708314/spaceship05_ukeiwq.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708314/spaceship04_vjujko.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708315/spaceship01_feczey.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708316/spaceship03_qscjsl.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708330/spaceship09_d6q3al.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708332/spaceship02_elh8or.jpg',
+  'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708334/spaceship06_dszz5r.jpg'
+]
+i = 0
+
 10.times do
+  i += 1
   spaceship = Spaceship.create(
     name:          Faker::TvShows::TheExpanse.ship,
     description:   fake_description,
@@ -52,6 +67,7 @@ countries = Country.all
     )
   spaceship.country = countries.sample
   spaceship.user = users.sample
+  spaceship.remote_image_url = images[i]
   spaceship.save
 end
 
