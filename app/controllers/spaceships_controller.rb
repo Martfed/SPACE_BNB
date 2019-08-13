@@ -33,6 +33,7 @@ class SpaceshipsController < ApplicationController
 
   def set_spaceship
     @spaceship = Spaceship.find(params[:id])
+  end
 
   def spaceship_params
     params.require(:spaceship).permit(:name, :description, :address, :country_id, :city, :capacity, :image, :price)
