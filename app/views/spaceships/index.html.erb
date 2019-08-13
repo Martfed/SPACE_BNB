@@ -1,2 +1,11 @@
 <h1>Spaceships#index</h1>
 <p>Find me in app/views/spaceships/index.html.erb</p>
+<ul>
+  <% @spaceships.each do |spaceship| %>
+    <li><%= spaceship.name %></li>
+    <li><%= spaceship.description %></li>
+    <li><%= spaceship.capacity %></li>
+    <li><%= spaceship.country %></li>
+    <li>****************************</li>
+  <% end %>
+</ul>
