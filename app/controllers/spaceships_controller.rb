@@ -1,5 +1,6 @@
 class SpaceshipsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :set_spaceship, only: [:show]
 
   def index
     @spaceships = Spaceship.all
@@ -29,6 +30,9 @@ class SpaceshipsController < ApplicationController
   end
 
   private
+
+  def set_spaceship
+    @spaceship = Spaceship.find(params[:id])
 
   def spaceship_params
     params.require(:spaceship).permit(:name, :description, :address, :country_id, :city, :capacity, :image, :price)
