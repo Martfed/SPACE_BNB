@@ -1,12 +1,21 @@
-<%= simple_form_for([current_user, Spaceship.new]) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.association :country, require: true, input_html: { class: "beautiful-dropdown"}, include_hidden: false %>
-  <%= f.input :city %>
-  <%= f.input :address %>
-  <%= f.input :capacity %>
-  <%= f.input :price %>
-  <%= f.input :image %>
-  <%= f.input :image_cache, as: :hidden %>
-  <%= f.button :submit %>
-<% end %>
+<div class="row  justify-content-center">
+  <div class="col-12 col-sm-8 col-md-6 space-form">
+    <% if spaceship.new_record? %>
+      <h2>Create your spaceship:</h2>
+    <% else %>
+      <h2>Edit your spaceship:</h2>
+    <% end %>
+    <%= simple_form_for([current_user, spaceship]) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.association :country, require: true, input_html: { class: "beautiful-dropdown"}, include_hidden: false %>
+      <%= f.input :city %>
+      <%= f.input :address %>
+      <%= f.input :capacity %>
+      <%= f.input :price %>
+      <%= f.input :image %>
+      <%= f.input :image_cache, as: :hidden %>
+      <%= f.button :submit, class: 'btn btn-main' %>
+    <% end %>
+  <div>
+</div>
