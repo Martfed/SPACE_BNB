@@ -6,6 +6,7 @@
 
   <div class="row">
 
+
     <div class="col-12 col-md-9">
       <div class="spaceship-presentation">
         <h2><%= @spaceship.name %></h2>
@@ -16,24 +17,30 @@
 
         <h3>Address</h3>
         <p>GOOGLE MAPS MAP</p>
-
+        
         <h3>Pictures</h3>
         <p>TO DO</p>
+        
+        <h3>Booking</h3>
+          <% if user_signed_in? %>
+           <%= simple_form_for([current_user, @spaceship, Booking.new]) do |f| %>
+             <%= f.input :start_date, as: :date, html5: true  %>
+             <%= f.input :end_date, as: :date, html5: true  %>
+             <%= f.button :submit %>
+            <% end %>
+          <% end %>
 
-        <%= link_to "Back", root_path, class: "btn btn-main" %>
-        <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
-        <%= link_to "Delete", user_spaceship_path(current_user, @spaceship), method: :delete,
-            data: { confirm: "Are you sure?" }, class: "btn btn-main" %>
-
-
-      </div>
+          <%= link_to "Back", root_path, class: "btn btn-main" %>
+          <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
+          <%= link_to "Delete", user_spaceship_path(current_user, @spaceship), method: :delete,
+              data: { confirm: "Are you sure?" }, class: "btn btn-main" %>
+       </div>
     </div>
-
+    
     <div class="booking-form calendar col-12 col-md-3">
-      <h3>Booking form</h3>
+      h3>Booking form</h3>
       <h3>TO DO</h3>
     </div>
-
+  
   </div>
-
 </div>
