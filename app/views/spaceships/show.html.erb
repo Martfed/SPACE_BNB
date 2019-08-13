@@ -1,25 +1,39 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);"> <h1>Spaceships#show</h1>
+<div class="spaceship-banner" style="background-image: url('<%= cl_image_path(@spaceship.image, :crop => :fill) %>');">
 </div>
 
- <div class="booking-form">
+<div class="container">
 
- </div>
+  <div class="row">
 
- <div class="container">
-  <h1>@spaceship.name</h1>
-  <p>Capacity: @spaceship.capacity</p>
+    <div class="col-12 col-md-9">
+      <div class="spaceship-presentation">
+        <h2><%= @spaceship.name %></h2>
+        <p>Capacity: <%= @spaceship.capacity %></p>
 
-   <h2>Description</h2>
-  <p>@spaceship.description</p>
+        <h3>Description</h3>
+        <p><%= @spaceship.description %></p>
 
-   <h2>Address</h2>
-  <p>GOOGLE MAPS MAP</p>
+        <h3>Address</h3>
+        <p>GOOGLE MAPS MAP</p>
 
-  <%= link_to "Back", root_path, class: "btn btn-main" %>
-  <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
-  <%= link_to "Delete", user_spaceship_path(current_user, @spaceship), method: :delete,
-      data: { confirm: "Are you sure?" }, class: "btn btn-main" %>
+        <h3>Pictures</h3>
+        <p>TO DO</p>
+
+        <%= link_to "Back", root_path, class: "btn btn-main" %>
+        <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
+        <%= link_to "Delete", user_spaceship_path(current_user, @spaceship), method: :delete,
+            data: { confirm: "Are you sure?" }, class: "btn btn-main" %>
 
 
- </div>
+      </div>
+    </div>
+
+    <div class="booking-form calendar col-12 col-md-3">
+      <h3>Booking form</h3>
+      <h3>TO DO</h3>
+    </div>
+
+  </div>
+
+</div>
