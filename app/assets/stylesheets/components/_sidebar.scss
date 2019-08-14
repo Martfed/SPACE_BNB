@@ -13,9 +13,13 @@
   padding: 0px;
   li {
     padding: 15px 0px 15px 40px;
-    a {
-    color: $white;
-    }
+  }
+}
+
+.sidebar-tab {
+  color: $white;
+  &:hover {
+    background-color: $dark;
   }
 }
 
