@@ -3,7 +3,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  def myspaceships
+  def mybookings
     @bookings = Booking.where(user_id: params[:user_id])
+  end
+
+  def myships
+    @user = User.find(params[:user_id])
+    @ships = @user.spaceships
   end
 end
