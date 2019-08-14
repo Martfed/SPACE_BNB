@@ -8,9 +8,11 @@
 
 a:hover {
   text-decoration: none;
-  .card-title, .card-text, .price, .card {
-    color: $pink;
-    border-color: $pink;
+  .card-body {
+    background-color: $strong;
+  }
+  .card {
+    border-color: $strong;
   }
 }
 

@@ -7,7 +7,7 @@
   z-index: 900;
   font-size: 2em;
   &:hover {
-    color: $pink;
+    color: $strong;
   }
 }
 
@@ -49,13 +49,13 @@
     }
   }
   &:hover {
-    background-color: $pink;
+    background-color: $strong;
     .popup-content {
       .popup-content-info {
         h3, p {
           text-decoration: none;
           color: $white;
-          background-color: $pink;
+          background-color: $strong;
         }
       }
     }

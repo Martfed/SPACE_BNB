@@ -16,11 +16,17 @@
         <p><%= @spaceship.description %></p>
 
         <h3>Address</h3>
-        <p>GOOGLE MAPS MAP</p>
-        
+        <p><%= @spaceship.address %></p>
+        <div
+          id="map"
+          style="width: 100%;
+          height: 300px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
         <h3>Pictures</h3>
         <p>TO DO</p>
-        
+
         <h3>Booking</h3>
           <% if user_signed_in? %>
            <%= simple_form_for([current_user, @spaceship, Booking.new]) do |f| %>
@@ -36,11 +42,11 @@
               data: { confirm: "Are you sure?" }, class: "btn btn-main" %>
        </div>
     </div>
-    
+
     <div class="booking-form calendar col-12 col-md-3">
       h3>Booking form</h3>
       <h3>TO DO</h3>
     </div>
-  
+
   </div>
 </div>
