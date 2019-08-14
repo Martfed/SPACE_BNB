@@ -28,7 +28,7 @@
   </div>
 
   <div id="results-position">
-    <div data-target="dropdown.results_all_bookings" class = "allbookings">
+    <div data-target="dropdown.results_all_bookings">
       <% @spaceships.each do |spaceship| %>
         <% spaceship.bookings.each do |booking| %>
           <p> <%= booking.confirmation_status %></p>
