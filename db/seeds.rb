@@ -20,6 +20,22 @@ countries.each do |country|
   Country.create(name: country["name"])
 end
 
+puts "Creating master user..."
+
+master_user = User.create(
+    first_name:             'Federico',
+    last_name:              'Von Pooface',
+    species:                'Human',
+    email:                  'master@user.com',
+    payment_info:           Faker::Stripe.valid_card,
+    password:               "master",
+    password_confirmation:  "master"
+    )
+master_user.save
+
+puts "Master user's email: master@user.com"
+puts "Master user's password: master"
+
 
 puts "Creating users..."
 
@@ -80,7 +96,11 @@ addresses = [
     price:         rand(5000..100000)
     )
   spaceship.country = countries.sample
-  spaceship.user = users.sample
+  if i < 8
+    spaceship.user = users.sample
+  else
+    spaceship.user = master_user
+  end
   spaceship.remote_image_url = images[i]
   spaceship.save
   i += 1
@@ -101,6 +121,19 @@ spaceships = Spaceship.all
   booking.save
 end
 
+puts "Invoking master user's bookings..."
+
+4.times do
+  date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
+  booking = Booking.create(
+    start_date:  date,
+    end_date:    date + rand(3..10).days,
+    )
+  booking.spaceship = spaceships.sample
+  booking.user = master_user
+  booking.save
+end
+
 puts "Pulling reviews out of my buttocks..."
 
 bookings = Booking.all
@@ -116,5 +149,20 @@ bookings.each do |booking|
     review.save
   end
 end
+
+puts "Pulling master user's reviews out of my buttocks..."
+
+master_user.bookings.each do |booking|
+  4.times do
+    date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
+    review = Review.create(
+      content:    Faker::TvShows::RickAndMorty.quote,
+      rating:     rand(0..5)
+      )
+    review.booking = bookings.sample
+    review.save
+  end
+end
+
 
 puts "Finished"
