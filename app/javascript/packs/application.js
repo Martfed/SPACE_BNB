@@ -12,4 +12,3 @@ application.load(definitionsFromContext(context))
 
 
 initMapbox();
-

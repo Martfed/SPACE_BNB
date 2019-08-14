@@ -23,19 +23,8 @@
           height: 300px;"
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-        <h3>Pictures</h3>
-        <p>TO DO</p>
-
-        <h3>Booking</h3>
-          <% if user_signed_in? %>
-           <%= simple_form_for([current_user, @spaceship, Booking.new]) do |f| %>
-             <%= f.input :start_date, as: :date, html5: true  %>
-             <%= f.input :end_date, as: :date, html5: true  %>
-             <%= f.button :submit %>
-            <% end %>
-          <% end %>
-
+          <h3>Pictures</h3>
+          <p>TO DO</p>
           <%= link_to "Back", root_path, class: "btn btn-main" %>
           <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
           <%= link_to "Delete", user_spaceship_path(current_user, @spaceship), method: :delete,
@@ -43,9 +32,14 @@
        </div>
     </div>
 
-    <div class="booking-form calendar col-12 col-md-3">
-      h3>Booking form</h3>
-      <h3>TO DO</h3>
+    <div class="booking-form calendar col-12 col-md-3" id="booking-form-ship">
+      <% if user_signed_in? %>
+        <%= simple_form_for([current_user, @spaceship, Booking.new]) do |f| %>
+          <%= f.input :start_date, as: :date, html5: true  %>
+          <%= f.input :end_date, as: :date, html5: true  %>
+          <%= f.button :submit, class: "btn btn-main" %>
+        <% end %>
+      <% end %>
     </div>
 
   </div>
