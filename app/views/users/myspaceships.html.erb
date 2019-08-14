@@ -1,0 +1,6 @@
+<h1>Hello World</h1>
+<% @bookings.each do |booking| %>
+  <p><%= Spaceship.where(id: booking.spaceship_id)[0].name %></p>
+  <p><%= booking.start_date %> - <%= booking.end_date %></p>
+  <p>Status: <%= booking.confirmation_status %></p>
+<% end %>
