@@ -2,8 +2,14 @@
   color: $white;
   justify-content: space-between;
   background: $dark;
+  .navbar-brand {
+    padding: 0;
+  }
   p {
     margin: 0;
+    .fas {
+      font-size: 32px;
+    }
   }
 }
 
