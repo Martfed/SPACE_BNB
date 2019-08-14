@@ -124,7 +124,7 @@ end
 
 puts "Invoking master user's bookings..."
 
-4.times do
+10.times do
   date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
   booking = Booking.create(
     start_date:  date,
