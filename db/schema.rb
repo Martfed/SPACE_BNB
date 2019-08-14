@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(version: 2019_08_14_083618) do
     t.string "first_name"
     t.string "last_name"
     t.string "species"
-    t.string "email"
     t.string "payment_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

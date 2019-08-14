@@ -1,0 +1,19 @@
+.sidebar {
+  min-width: 250px;
+  position: sticky;
+  top: 0px;
+}
+.sidebar-body {
+  background-color: $lighter;
+  height: 100vh;
+}
+
+.tabs {
+  list-style-type: none;
+  li {
+    padding: 15px 0px;
+    a {
+    color: $white;
+    }
+  }
+}
