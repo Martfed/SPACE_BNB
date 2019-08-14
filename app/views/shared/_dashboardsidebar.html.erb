@@ -4,17 +4,22 @@
   <ul class="tabs">
     <li id="sidebar-title">Dashboard</li>
 
-    <li class="sidebar-tab"
-         data-target="tab.bar"
-         data-action="click->tab#toggle"><%= link_to "My space trips", user_dashboard_path(current_user) %></li>
+    <%= link_to user_dashboard_path(current_user) do %>
+      <li class="sidebar-tab" data-target="tab.bar">My space trips</li>
+    <% end %>
 
-    <li class="sidebar-tab"
-        data-target="tab.bar"><%= link_to "Account", user_dashboard_account_info_path(current_user) %></li>
+    <%= link_to user_dashboard_account_info_path(current_user) do %>
+      <li class="sidebar-tab" data-target="tab.bar">Account</li>
+    <% end %>
 
-    <li class="sidebar-tab"
-        data-target="tab.bar"><%= link_to "My spaceships", user_dashboard_my_spaceships_path(current_user) %></li>
+    <%= link_to user_dashboard_my_spaceships_path(current_user) do %>
+      <li class="sidebar-tab" data-target="tab.bar">My spaceships</li>
+    <% end %>
 
-    <li class="sidebar-tab"
-        data-target="tab.bar"><%= link_to "Spaceship bookings", user_dashboard_my_spaceships_bookings_path(current_user) %></li>
+    <%= link_to user_dashboard_my_spaceships_bookings_path(current_user) do %>
+      <li class="sidebar-tab" data-target="tab.bar">Spaceship bookings</li>
+    <% end %>
+
   </ul>
 </div>
+
