@@ -19,3 +19,20 @@
   <% end %>
   <p> <%= spaceship.name %> </p>
 <% end %>
+
+
+<div data-controller="dropdown">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropdown button
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#" data-target="dropdown.allbookings">All bookings</a>
+      <a class="dropdown-item" href="#" id = "pendingbookings">Pending bookgins</a>
+      <a class="dropdown-item" href="#" id = "cancelledbookings">Cancelled bookings</a>
+    </div>
+  </div>
+
+  <div data-target="dropdown.results">
+  </div>
+</div>
