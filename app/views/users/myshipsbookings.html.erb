@@ -11,15 +11,6 @@
 <% end %>
 
 <h2>All Bookings to be filtered by status with drop down list</h2>
-<% @spaceships.each do |spaceship| %>
-  <% spaceship.bookings.each do |booking| %>
-    <p> <%= booking.confirmation_status %></p>
-    <p> <%= booking.start_date %> <%= booking.end_date %> </p>
-    <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
-  <% end %>
-  <p> <%= spaceship.name %> </p>
-<% end %>
-
 
 <div data-controller="dropdown">
   <div class="dropdown">
@@ -27,12 +18,77 @@
       Dropdown button
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#" data-target="dropdown.allbookings">All bookings</a>
-      <a class="dropdown-item" href="#" id = "pendingbookings">Pending bookgins</a>
-      <a class="dropdown-item" href="#" id = "cancelledbookings">Cancelled bookings</a>
+      <a class="dropdown-item" data-target="dropdown.allbookings">All bookings</a>
+      <a class="dropdown-item" data-target ="dropdown.pendingbookings">Pending bookgins</a>
+      <a class="dropdown-item" data-target ="dropdown.acceptedbookings">Accepted bookings</a>
+      <a class="dropdown-item" data-target ="dropdown.rejectedbookings">Rejected bookings</a>
+      <a class="dropdown-item" data-target ="dropdown.activebookings">Active bookings</a>
+      <a class="dropdown-item" data-target ="dropdown.donebookings">Done bookings</a>
     </div>
   </div>
 
-  <div data-target="dropdown.results">
+  <div id="results-position">
+    <div data-target="dropdown.results_all_bookings" class = "allbookings">
+      <% @spaceships.each do |spaceship| %>
+        <% spaceship.bookings.each do |booking| %>
+          <p> <%= booking.confirmation_status %></p>
+          <p> <%= booking.start_date %> <%= booking.end_date %> </p>
+          <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
+        <% end %>
+        <p> <%= spaceship.name %> </p>
+      <% end %>
+    </div>
+    <div data-target="dropdown.results_pending_bookings" class = "pendingbookings">
+      <% @spaceships.each do |spaceship| %>
+        <% spaceship.bookings.where(confirmation_status: "pending").each do |booking| %>
+          <p> <%= booking.confirmation_status %></p>
+          <p> <%= booking.start_date %> <%= booking.end_date %> </p>
+          <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
+        <% end %>
+        <p> <%= spaceship.name %> </p>
+      <% end %>
+    </div>
+    <div data-target="dropdown.results_accepted_bookings" class = "acceptedbookings">
+      <% @spaceships.each do |spaceship| %>
+        <% spaceship.bookings.where(confirmation_status: "accepted").each do |booking| %>
+          <p> <%= booking.confirmation_status %></p>
+          <p> <%= booking.start_date %> <%= booking.end_date %> </p>
+          <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
+        <% end %>
+        <p> <%= spaceship.name %> </p>
+      <% end %>
+    </div>
+    <div data-target="dropdown.results_rejected_bookings" class = "rejectedbookings">
+      <% @spaceships.each do |spaceship| %>
+        <% spaceship.bookings.where(confirmation_status: "rejected").each do |booking| %>
+          <p> <%= booking.confirmation_status %></p>
+          <p> <%= booking.start_date %> <%= booking.end_date %> </p>
+          <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
+        <% end %>
+        <p> <%= spaceship.name %> </p>
+      <% end %>
+    </div>
+     <div data-target="dropdown.results_active_bookings" class = "activebookings">
+      <% @spaceships.each do |spaceship| %>
+        <% spaceship.bookings.where(confirmation_status: "active").each do |booking| %>
+          <p> <%= booking.confirmation_status %></p>
+          <p> <%= booking.start_date %> <%= booking.end_date %> </p>
+          <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
+        <% end %>
+        <p> <%= spaceship.name %> </p>
+      <% end %>
+    </div>
+    <div data-target="dropdown.results_done_bookings" class = "donebookings">
+      <% @spaceships.each do |spaceship| %>
+        <% spaceship.bookings.where(confirmation_status: "done").each do |booking| %>
+          <p> <%= booking.confirmation_status %></p>
+          <p> <%= booking.start_date %> <%= booking.end_date %> </p>
+          <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
+        <% end %>
+        <p> <%= spaceship.name %> </p>
+      <% end %>
+    </div>
   </div>
 </div>
+
+<!-- %w(pending accepted rejected active done) -->
