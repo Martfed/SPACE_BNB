@@ -9,6 +9,11 @@ class UsersController < ApplicationController
 
   def myships
     @user = User.find(params[:user_id])
-    @ships = @user.spaceships
+    @spaceships = @user.spaceships
+  end
+
+  def myshipsbookings
+    @user = User.find(params[:user_id])
+    @spaceships = @user.spaceships
   end
 end
