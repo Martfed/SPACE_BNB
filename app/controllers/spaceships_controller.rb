@@ -9,7 +9,8 @@ class SpaceshipsController < ApplicationController
       {
         lat: spaceship.latitude,
         lng: spaceship.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { spaceship: spaceship })
+        infoWindow: render_to_string(partial: "info_window", locals: { spaceship: spaceship }),
+        image_url: helpers.asset_url("/images/map-marker.png")
       }
     end
   end

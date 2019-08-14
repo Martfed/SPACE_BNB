@@ -1,4 +1,14 @@
-<h1>Hello World</h1>
-<% @spaceships.each do |spaceship| %>
-  <p><%= spaceship.name %></p>
-<% end %>
+<div class="dashboard-container">
+
+  <div class="sidebar">
+    <%= render 'shared/dashboardsidebar' %>
+  </div>
+
+  <div class="dashboard-main">
+    <h2>My Spaceships:</h2>
+    <% @spaceships.each do |spaceship| %>
+      <p><%= spaceship.name %></p>
+    <% end %>
+  </div>
+
+</div>
