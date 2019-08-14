@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_123928) do
+ActiveRecord::Schema.define(version: 2019_08_14_083618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_08_13_123928) do
     t.bigint "country_id"
     t.integer "price", default: 0
     t.string "image"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["country_id"], name: "index_spaceships_on_country_id"
     t.index ["user_id"], name: "index_spaceships_on_user_id"
   end
@@ -62,10 +64,10 @@ ActiveRecord::Schema.define(version: 2019_08_13_123928) do
     t.string "first_name"
     t.string "last_name"
     t.string "species"
+    t.string "email"
     t.string "payment_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

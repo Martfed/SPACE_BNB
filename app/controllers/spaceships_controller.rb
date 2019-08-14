@@ -3,7 +3,14 @@ class SpaceshipsController < ApplicationController
   before_action :set_spaceship, only: [:show, :edit, :update]
 
   def index
-    @spaceships = Spaceship.all
+    @spaceships = Spaceship.geocoded #returns flats with coordinates
+
+    @markers = @spaceships.map do |spaceship|
+      {
+        lat: spaceship.latitude,
+        lng: spaceship.longitude
+      }
+    end
   end
 
   def show

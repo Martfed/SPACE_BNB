@@ -2,9 +2,17 @@
 body {
   color: $white;
 }
-.cards {
-  width: 1000px;
+.container {
+  max-width: 960px;
   margin: 0 auto;
+}
+#map {
+  max-width: 600px;
+  max-height: 350px;
+  margin: 30px auto;
+}
+.cards {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 auto;
 }

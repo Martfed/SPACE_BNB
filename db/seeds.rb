@@ -3,7 +3,7 @@ require 'faker'
 
 fake_description ='The Akajor-class shuttle, also referred to simply as the Mandalorian shuttle, was a type of shuttle manufactured by MandalMotors during the Clone Wars for the New Mandalorians. The Akajor-class was not equipped with a hyperdrive,measured at a length of 17.97 meters, and could reach speeds of 900 kilometers per hour. Although unarmed, several owners modified their shuttles to carry weapons. The shuttles had two rotating wings, one on each side, that changed position when landing, and acting as part of the landing gear. The wings were also decorated with Mandalorian designs. The front of the shuttle also had a landing gear leg, and a platform with a ramp that lowered from the rear of the ship for entry and exit. The shuttle could accommodate at least four passengers, and was crewed by at least two pilots.'
 
-puts 'Deleting all countries, users, spaceship, bookings and reviews...'
+puts 'Deleting all countries, users, spaceships, bookings and reviews...'
 
 User.destroy_all
 Country.destroy_all
@@ -15,7 +15,7 @@ puts 'Reading JSON file...'
 serialized_countries = File.read(@json_path)
 countries = JSON.parse(serialized_countries)
 
-puts "Creating countries..."
+puts "Collecting all of the world's countries..."
 countries.each do |country|
   Country.create(name: country["name"])
 end
@@ -36,7 +36,7 @@ puts "Creating users..."
   user.save
 end
 
-puts "Creating spaceships..."
+puts "Inventing spaceships..."
 
 users = User.all
 countries = Country.all
@@ -57,12 +57,25 @@ images = [
 names = ['Milennium Falcon', 'Space Shuttle', 'The Mandalorian Arrow', 'Schiaparelli', 'Corvette', 'Enterprise', 'T-wing', 'Federican Pooface', 'Frankurian Rocket', 'Emoji Carriage']
 i = 0
 
+addresses = [
+  'Kantersteen 12, 1000 Brussel',
+  'Duquesnoystraat 14, 1000 Brussel',
+  'Onderrichtsstraat 81, 1000 Brussel',
+  'Munt, 1000 Brussel',
+  'Kartuizersstraat 35, 1000 Brussel',
+  'Luxemburgplein 100, 1050 Brussel',
+  'Koningsstraat 236, 1210 Sint-Joost-ten-Node',
+  'Henegouwenkaai 41, 1080 Sint-Jans-Molenbeek',
+  'Ter Platen 12, 9000 Gent',
+  'Gebroeders de Smetstraat 6, 9000 Gent'
+]
+
 10.times do
   spaceship = Spaceship.create(
     name:          names[i],
     description:   fake_description,
-    address:       Faker::Address.street_address,
-    city:          Faker::Address.city,
+    address:       addresses[i],
+    city:          addresses[i].split(' ').last,
     capacity:      rand(1..9999),
     price:         rand(5000..100000)
     )
@@ -73,7 +86,7 @@ i = 0
   i += 1
 end
 
-puts "Pulling bookings out of my ass..."
+puts "Invoking bookings..."
 
 spaceships = Spaceship.all
 
