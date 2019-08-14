@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :mybookings]
+
   def show
-    @user = User.find(params[:user_id])
   end
 
   def mybookings
@@ -10,5 +11,11 @@ class UsersController < ApplicationController
   def myships
     @user = User.find(params[:user_id])
     @ships = @user.spaceships
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end

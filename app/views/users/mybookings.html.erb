@@ -1,6 +1,15 @@
-<h1>Hello World</h1>
-<% @bookings.each do |booking| %>
-  <p><%= Spaceship.where(id: booking.spaceship_id)[0].name %></p>
-  <p><%= booking.start_date %> - <%= booking.end_date %></p>
-  <p>Status: <%= booking.confirmation_status %></p>
-<% end %>
+<h2>Welcome <%= @user.first_name %>, these are your upcoming space trips:</h2>
+
+
+  <% @bookings.each do |booking| %>
+    <% @spaceship = Spaceship.where(id: booking.spaceship_id)[0] %>
+    <div class="card-dashboard">
+      <%= cl_image_tag @spaceship.image, width: 400, height: 300, crop: :fill %>
+      <div class="card-dashboard-body">
+        <h3><%= @spaceship.name %></h3>
+        <p><%= booking.start_date %> - <%= booking.end_date %></p>
+        <p>Status: <%= booking.confirmation_status %></p>
+      </div>
+    </div>
+  <% end %>
+
