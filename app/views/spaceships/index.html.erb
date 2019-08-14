@@ -3,15 +3,17 @@
 
 <div class="cards">
   <% @spaceships.each do |spaceship| %>
-    <div class="card spaceship-card-small" style="width: 18rem;">
-      <div class="card-img-top" style="background-image: url(<%= cl_image_path spaceship.image, height: 200, crop: :fill %>)">
+    <%= link_to user_spaceship_path(spaceship.user, spaceship) do %>
+      <div class="card spaceship-card-small" style="width: 18rem;">
+        <div class="card-img-top" style="background-image: url(<%= cl_image_path spaceship.image, height: 200, crop: :fill %>); background-position: center">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= spaceship.name %></h5>
+          <p class="card-text"><%= spaceship.city %></p>
+          <p class="price"><%= spaceship.price %>/d</p>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title"><%= spaceship.name %></h5>
-        <p class="card-text"><%= spaceship.city %></p>
-        <p class=" price"><%= spaceship.price %>/d</p>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 
