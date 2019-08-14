@@ -67,9 +67,5 @@ export default class extends Controller {
       (this.results_done_bookingsTarget).classList.remove("donebookings");
      });
   }
-
-  show() {
-    console.log("Hello")
-  }
 }
 

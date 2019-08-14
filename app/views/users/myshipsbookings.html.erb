@@ -21,9 +21,7 @@
           Dropdown button
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item"
-             data-target="dropdown.allbookings"
-             data-action="click->dropdown#show">All bookings</a>
+          <a class="dropdown-item" data-target="dropdown.allbookings">All bookings</a>
           <a class="dropdown-item" data-target ="dropdown.pendingbookings">Pending bookgins</a>
           <a class="dropdown-item" data-target ="dropdown.acceptedbookings">Accepted bookings</a>
           <a class="dropdown-item" data-target ="dropdown.rejectedbookings">Rejected bookings</a>
@@ -41,6 +39,7 @@
               <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
             <% end %>
             <p> <%= spaceship.name %> </p>
+            <p>****************************************************************************</p>
           <% end %>
         </div>
         <div data-target="dropdown.results_pending_bookings" class = "pendingbookings">
@@ -51,6 +50,7 @@
               <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
             <% end %>
             <p> <%= spaceship.name %> </p>
+            <p>****************************************************************************</p>
           <% end %>
         </div>
         <div data-target="dropdown.results_accepted_bookings" class = "acceptedbookings">
@@ -61,6 +61,7 @@
               <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
             <% end %>
             <p> <%= spaceship.name %> </p>
+            <p>****************************************************************************</p>
           <% end %>
         </div>
         <div data-target="dropdown.results_rejected_bookings" class = "rejectedbookings">
@@ -71,6 +72,7 @@
               <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
             <% end %>
             <p> <%= spaceship.name %> </p>
+            <p>****************************************************************************</p>
           <% end %>
         </div>
         <div data-target="dropdown.results_active_bookings" class = "activebookings">
@@ -81,6 +83,7 @@
               <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
             <% end %>
             <p> <%= spaceship.name %> </p>
+            <p>****************************************************************************</p>
           <% end %>
         </div>
         <div data-target="dropdown.results_done_bookings" class = "donebookings">
@@ -91,6 +94,7 @@
               <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
             <% end %>
             <p> <%= spaceship.name %> </p>
+            <p>****************************************************************************</p>
           <% end %>
         </div>
       </div>
