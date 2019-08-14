@@ -1,5 +1,7 @@
 .card {
-  width: 300px;
+  flex-grow: 1;
+  min-width: 150px;
+  max-width: 350px;
   height: 275px;
   border-radius: 10px;
   margin: 10px;
@@ -17,6 +19,7 @@ a:hover {
 }
 
 .card-img-top {
+  background-size: cover;
   height: 200px;
   border-radius: 10px 10px 0px 0px;
 }
