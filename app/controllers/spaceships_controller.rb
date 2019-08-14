@@ -8,7 +8,8 @@ class SpaceshipsController < ApplicationController
     @markers = @spaceships.map do |spaceship|
       {
         lat: spaceship.latitude,
-        lng: spaceship.longitude
+        lng: spaceship.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { spaceship: spaceship })
       }
     end
   end
