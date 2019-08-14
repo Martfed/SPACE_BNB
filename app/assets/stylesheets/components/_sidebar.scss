@@ -10,10 +10,15 @@
 
 .tabs {
   list-style-type: none;
+  padding: 0px;
   li {
-    padding: 15px 0px;
+    padding: 15px 0px 15px 40px;
     a {
     color: $white;
     }
   }
+}
+
+#sidebar-title {
+  background-color: $darkest;
 }
