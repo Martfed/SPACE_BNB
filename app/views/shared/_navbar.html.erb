@@ -1,13 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <p><%= image_tag "logo" %> SpaceBNB</p>
+    <p><%= image_tag "/images/logo.png" %> SpaceBNB</p>
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Dashboard", "#", class: "nav-link" %>
+          <%= link_to "Dashboard", user_dashboard_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
