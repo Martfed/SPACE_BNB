@@ -1,0 +1,21 @@
+<h1>Hello World</h1>
+
+<h2>Bookings to accept (with confirmation_status: pending)</h2>
+<% @spaceships.each do |spaceship| %>
+  <% spaceship.bookings.where(confirmation_status: "pending").each do |booking| %>
+    <p> <%= booking.confirmation_status %></p>
+    <p> <%= booking.start_date %> <%= booking.end_date %> </p>
+    <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
+  <% end %>
+  <p> <%= spaceship.name %> </p>
+<% end %>
+
+<h2>All Bookings to be filtered by status with drop down list</h2>
+<% @spaceships.each do |spaceship| %>
+  <% spaceship.bookings.each do |booking| %>
+    <p> <%= booking.confirmation_status %></p>
+    <p> <%= booking.start_date %> <%= booking.end_date %> </p>
+    <p> <%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </p>
+  <% end %>
+  <p> <%= spaceship.name %> </p>
+<% end %>
