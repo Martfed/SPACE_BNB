@@ -1,0 +1,13 @@
+.allbookings,
+.pendingbookings,
+.acceptedbookings,
+.rejectedbookings,
+.activebookings,
+.donebookings {
+  position:absolute;
+  visibility: hidden;
+}
+
+#results-position {
+  position: relative;
+}

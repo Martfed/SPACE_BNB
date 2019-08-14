@@ -115,6 +115,7 @@ spaceships = Spaceship.all
   booking = Booking.create(
     start_date:  date,
     end_date:    date + rand(3..10).days,
+    confirmation_status: %w(pending accepted rejected active done).sample,
     )
   booking.spaceship = spaceships.sample
   booking.user = users.sample
@@ -128,6 +129,7 @@ puts "Invoking master user's bookings..."
   booking = Booking.create(
     start_date:  date,
     end_date:    date + rand(3..10).days,
+    confirmation_status: %w(pending accepted rejected active done).sample,
     )
   booking.spaceship = spaceships.sample
   booking.user = master_user
