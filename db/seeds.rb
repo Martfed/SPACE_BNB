@@ -20,23 +20,6 @@ countries.each do |country|
   Country.create(name: country["name"])
 end
 
-puts "Creating master user..."
-
-master_user = User.create(
-    first_name:             'Federico',
-    last_name:              'Von Pooface',
-    species:                'Human',
-    email:                  'master@user.com',
-    payment_info:           Faker::Stripe.valid_card,
-    password:               "master",
-    password_confirmation:  "master"
-    )
-master_user.save
-
-puts "Master user's email: master@user.com"
-puts "Master user's password: master"
-
-
 puts "Creating users..."
 
 10.times do
@@ -52,9 +35,25 @@ puts "Creating users..."
   user.save
 end
 
+users = User.all
+
+puts "Creating master user..."
+
+master_user = User.create(
+    first_name:             'Federico',
+    last_name:              'Von Pooface',
+    species:                'Human',
+    email:                  'master@user.com',
+    payment_info:           Faker::Stripe.valid_card,
+    password:               "master",
+    password_confirmation:  "master"
+    )
+master_user.save
+
+puts "Master user's email: master@user.com"
+puts "Master user's password: master"
 puts "Inventing spaceships..."
 
-users = User.all
 countries = Country.all
 
 images = [
@@ -96,7 +95,7 @@ addresses = [
     price:         rand(5000..100000)
     )
   spaceship.country = countries.sample
-  if i < 8
+  if i < 7
     spaceship.user = users.sample
   else
     spaceship.user = master_user
