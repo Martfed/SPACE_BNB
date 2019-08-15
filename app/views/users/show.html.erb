@@ -12,6 +12,7 @@
     <p> Species: <%= @user.species %> </p>
     <p> Email: <%= @user.email %> </p>
     <p> Payment info: <%= @user.payment_info %> </p>
+    <%= link_to "Edit my profile", edit_user_path(current_user), class: "btn btn-main" %>
   </div>
 
 </div>

@@ -42,5 +42,18 @@
       <% end %>
     </div>
 
+    <div id = "reviews">
+      <% @reviews.each do |review| %>
+        <p>Name: <%= review.booking.user.first_name %> <%= review.booking.user.last_name %></p>
+        <p>content: <%= review.content %> </p>
+        <p>rating:
+          <% review.rating.times do %>
+            <i class="fas fa-star" id="reviews-full-stars"></i>
+          <% end %>
+          <% (5 - review.rating).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
