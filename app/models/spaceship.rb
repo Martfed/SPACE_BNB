@@ -5,8 +5,8 @@ class Spaceship < ApplicationRecord
   has_many :reviews, through: :bookings, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
-  validates :description, :address, :city, :country, :country, presence: true
-  validates :capacity, presence: true, numericality: { only_integer: true }
+  validates :description, :address, :city, :country, presence: true
+  validates :capacity, :price, presence: true, numericality: { only_integer: true }
 
   mount_uploader :image, PhotoUploader
 
