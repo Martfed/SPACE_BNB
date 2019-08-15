@@ -3,7 +3,8 @@ class SpaceshipsController < ApplicationController
   before_action :set_spaceship, only: [:show, :edit, :update, :destroy]
 
   def index
-    @spaceships = Spaceship.geocoded #returns flats with coordinates
+    @spaceships = policy_scope(Spaceship).order(created_at: :desc)
+    # @spaceships = Spaceship.geocoded #returns flats with coordinates
 
     @markers = @spaceships.map do |spaceship|
       {
@@ -16,6 +17,7 @@ class SpaceshipsController < ApplicationController
   end
 
   def show
+    authorize @spaceship
     @markers = [@spaceship].map do |spaceship|
       {
         lat: spaceship.latitude,
@@ -29,19 +31,23 @@ class SpaceshipsController < ApplicationController
 
   def new
     @spaceship = Spaceship.new
+    authorize @spaceship
   end
 
   def create
     @spaceship = Spaceship.new(spaceship_params)
+    authorize @spaceship
     @spaceship.user = User.find(params[:user_id])
     @spaceship.save
-    redirect_to user_spaceships_path
+    redirect_to user_spaceship_path(current_user, @spaceship)
   end
 
   def edit
+    authorize @spaceship
   end
 
   def update
+    authorize @spaceship
     @spaceship.update(spaceship_params)
     if @spaceship.save
       redirect_to user_spaceship_path(current_user, @spaceship)
@@ -51,6 +57,7 @@ class SpaceshipsController < ApplicationController
   end
 
   def destroy
+    authorize @spaceship
     @spaceship.destroy
     redirect_to user_dashboard_my_spaceships_path(current_user)
 

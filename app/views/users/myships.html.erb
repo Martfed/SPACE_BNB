@@ -13,8 +13,11 @@
           <h3><%= spaceship.name %></h3>
           <div class="buttons buttons-right">
             <%= link_to "BOOKINGS", '#', class: "btn btn-main" %>
-            <%= link_to "EDIT", '#', class: "btn btn-main" %>
-            <%= link_to "DELETE", '#', class: "btn btn-main red-btn" %>
+            <%= link_to "EDIT", edit_user_spaceship_path(current_user, spaceship), class: "btn btn-main" %>
+            <%= link_to "DELETE", user_spaceship_path(current_user, spaceship),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: "btn btn-main red-btn" %>
           </div>
         </div>
       </div>
