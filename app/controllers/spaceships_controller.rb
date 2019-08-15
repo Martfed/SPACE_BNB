@@ -1,6 +1,6 @@
 class SpaceshipsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_spaceship, only: [:show, :edit, :update]
+  before_action :set_spaceship, only: [:show, :edit, :update, :destroy]
 
   def index
     @spaceships = Spaceship.geocoded #returns flats with coordinates
@@ -24,6 +24,7 @@ class SpaceshipsController < ApplicationController
         image_url: helpers.asset_url("/images/map-marker.png")
       }
     end
+    @reviews = @spaceship.reviews
   end
 
   def new
@@ -50,6 +51,8 @@ class SpaceshipsController < ApplicationController
   end
 
   def destroy
+    @spaceship.destroy
+    redirect_to user_spaceships_path
   end
 
   private
