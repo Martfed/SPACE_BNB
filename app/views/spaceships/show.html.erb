@@ -1,5 +1,8 @@
 
 <div class="spaceship-banner" style="background-image: url('<%= cl_image_path(@spaceship.image, :crop => :fill) %>');">
+  <p data-controller= "booking" id="booking-message-good">
+    <%= @message %>
+  </p>
 </div>
 
 <div class="container">
@@ -59,3 +62,4 @@
     </div>
   </div>
 </div>
+

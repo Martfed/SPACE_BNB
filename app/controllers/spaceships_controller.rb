@@ -24,6 +24,7 @@ class SpaceshipsController < ApplicationController
         image_url: helpers.asset_url("/images/map-marker.png")
       }
     end
+    @message = params[:message]
     @reviews = @spaceship.reviews
   end
 
