@@ -14,7 +14,13 @@
 
 #booking-form-ship {
   background-color: #541388;
-  input {
-    margin-bottom: -8px;
+
+  .buttons {
+    width: calc(100% - 40px);
+    position: absolute;
+    bottom: 10px;
+    .btn {
+      margin-top: 10px;
+    }
   }
 }
