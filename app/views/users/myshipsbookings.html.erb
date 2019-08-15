@@ -57,7 +57,7 @@
                   <p><%= spaceship.name %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
                   <p>status: <%= booking.confirmation_status %></p>
                   <div class="avatar-container">
-                    <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+                    <%= cl_image_tag(booking.user.image, width: 75, height: 75, crop: :fill, :class => "avatar") %>
                   </div>
                   <div class="buttons buttons-left">
                     <%= link_to "ACCEPT", '#', class: "btn btn-main green-btn #{'hide' unless booking.confirmation_status == "pending"}" %>

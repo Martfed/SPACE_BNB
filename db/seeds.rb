@@ -22,6 +22,20 @@ end
 
 puts "Creating users..."
 
+user_images = [
+  'https://avatars0.githubusercontent.com/u/52085295?v=4',
+  'https://avatars0.githubusercontent.com/u/51639218?v=4',
+  'https://avatars2.githubusercontent.com/u/51084422?v=4',
+  'https://avatars3.githubusercontent.com/u/51128673?v=4',
+  'https://avatars1.githubusercontent.com/u/52044985?v=4',
+  'https://avatars2.githubusercontent.com/u/51087021?v=4',
+  'https://avatars2.githubusercontent.com/u/52207783?v=4',
+  'https://avatars0.githubusercontent.com/u/50140032?v=4',
+  'https://avatars2.githubusercontent.com/u/43496861?v=4',
+  'https://nbocdn.akamaized.net/Assets/Images_Upload/2011/10/06/21-25810-actualite-apple-steve-jobs.jpg'
+]
+
+i = 0
 10.times do
   user = User.create(
     first_name:             Faker::Name.first_name,
@@ -32,7 +46,9 @@ puts "Creating users..."
     password:               "111111",
     password_confirmation:  "111111"
     )
+  user.remote_image_url = user_images[i]
   user.save
+  i += 1
 end
 
 users = User.all
@@ -48,6 +64,7 @@ master_user = User.create(
     password:               "master",
     password_confirmation:  "master"
     )
+master_user.remote_image_url = 'https://avatars2.githubusercontent.com/u/17019908?v=4'
 master_user.save
 
 puts "Master user's email: master@user.com"
