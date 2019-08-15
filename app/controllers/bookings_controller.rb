@@ -10,10 +10,12 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.user_id = params[:user_id]
     @booking.spaceship_id = params[:spaceship_id]
     @start_date_ok = @booking.start_date >= Date.today
