@@ -1,6 +1,6 @@
 class SpaceshipsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_spaceship, only: [:show, :edit, :update]
+  before_action :set_spaceship, only: [:show, :edit, :update, :destroy]
 
   def index
     @spaceships = Spaceship.geocoded #returns flats with coordinates
@@ -43,13 +43,15 @@ class SpaceshipsController < ApplicationController
   def update
     @spaceship.update(spaceship_params)
     if @spaceship.save
-      redirect_to user_spaceships_path
+      redirect_to user_spaceship_path(current_user, @spaceship)
     else
-      raise
+      render :edit
     end
   end
 
   def destroy
+    @spaceship.destroy
+    redirect_to user_dashboard_my_spaceships_path(current_user)
   end
 
   private

@@ -14,6 +14,9 @@
           <h3><%= @spaceship.name %></h3>
           <p><%= booking.start_date %> - <%= booking.end_date %></p>
           <p>Status: <%= booking.confirmation_status %></p>
+          <%= link_to "Open", user_spaceship_path(current_user, @spaceship) %>
+          <%= link_to "Cancel", "#" %>
+          <%= link_to "Contact Owner", "#" %>
         </div>
       </div>
     <% end %>

@@ -8,7 +8,12 @@
     <h2>My Spaceships:</h2>
     <% @spaceships.each do |spaceship| %>
       <p><%= spaceship.name %></p>
+      <%= link_to "Open", user_spaceship_path(current_user, spaceship) %>
+      <%= link_to "Edit", edit_user_spaceship_path(current_user, spaceship) %>
+      <%= link_to "Delete", user_spaceship_path(current_user, spaceship),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
     <% end %>
+    <%= link_to "Add a ship", new_user_spaceship_path(current_user), class: "btn btn-main" %>
   </div>
-
 </div>
