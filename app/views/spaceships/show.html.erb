@@ -29,7 +29,7 @@
           <h3>Pictures</h3>
           <p>TO DO</p>
           <%= link_to "Back", root_path, class: "btn btn-main" %>
-          <% if user_signed_in? %>
+          <% if policy(@spaceship).edit? %>
             <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
             <%= link_to "Delete", user_spaceship_path(current_user, @spaceship), method: :delete,
               data: { confirm: "Are you sure?" }, class: "btn btn-main" %>
