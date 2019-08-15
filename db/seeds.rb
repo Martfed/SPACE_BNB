@@ -86,7 +86,7 @@ images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708334/spaceship06_dszz5r.jpg'
 ]
 
-names = ['Milennium Falcon', 'Space Shuttle', 'The Mandalorian Arrow', 'Schiaparelli', 'Corvette', 'Enterprise', 'T-wing', 'Federican Pooface', 'Frankurian Rocket', 'Emoji Carriage']
+names = ['Milennium Falcon', 'Space Shuttle', 'The Mandalorian Arrow', 'Schiaparelli', 'Corvette', 'Enterprise', 'C-wing', 'Federican Pooface', 'Frankurian Rocket', 'Emoji Carriage']
 i = 0
 
 addresses = [

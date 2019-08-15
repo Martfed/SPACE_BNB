@@ -8,9 +8,13 @@
     <h2>My Spaceships:</h2>
     <% @spaceships.each do |spaceship| %>
       <div class="card-dashboard">
-        <%= cl_image_tag spaceship.image, width: 400, height: 300, crop: :fill %>
+        <%= link_to user_spaceship_path(current_user, spaceship) do %>
+          <%= cl_image_tag spaceship.image, width: 400, height: 300, crop: :fill %>
+        <% end %>
         <div class="card-dashboard-body">
-          <h3><%= spaceship.name %></h3>
+          <%= link_to user_spaceship_path(current_user, spaceship) do %>
+            <h3><%= spaceship.name %></h3>
+          <% end %>
           <div class="buttons buttons-right">
             <%= link_to "BOOKINGS", '#', class: "btn btn-main" %>
             <%= link_to "EDIT", edit_user_spaceship_path(current_user, spaceship), class: "btn btn-main" %>
