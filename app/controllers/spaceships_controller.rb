@@ -27,7 +27,7 @@ class SpaceshipsController < ApplicationController
       }
     end
     @message = params[:message]
-    @reviews = @spaceship.reviews
+    @reviews = @spaceship.reviews.order(created_at: :desc)
   end
 
   def new
