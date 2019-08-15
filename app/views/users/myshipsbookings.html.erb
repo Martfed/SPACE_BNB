@@ -9,14 +9,15 @@
         <div class="card-dashboard card-dashboard-body">
           <%= cl_image_tag spaceship.image, width: 400, height: 300, crop: :fill %>
           <div class="card-dashboard-body">
-            <p> <%= booking.confirmation_status %></p>
-            <p> <%= booking.start_date %> <%= booking.end_date %> </p>
+            <p>  Booking status: <%= booking.confirmation_status %></p>
+            <p> Booking dates: <%= booking.start_date %> <%= booking.end_date %> </p>
             <p> <%= booking.user.first_name %> <%= booking.user.last_name %> wants to rent your: <%= spaceship.name %></p>
             <%= link_to "Open", user_spaceship_path(current_user, spaceship) %>
             <%= link_to "Accept", "#" %>
             <%= link_to "Reject", "#" %>
             <%= link_to "Contact User", "#" %>
             <%= link_to "Profile", "#" %>
+
           </div>
         </div>
       <% end %>

@@ -24,6 +24,7 @@ class SpaceshipsController < ApplicationController
         image_url: helpers.asset_url("/images/map-marker.png")
       }
     end
+    @reviews = @spaceship.reviews
   end
 
   def new
@@ -52,6 +53,7 @@ class SpaceshipsController < ApplicationController
   def destroy
     @spaceship.destroy
     redirect_to user_dashboard_my_spaceships_path(current_user)
+
   end
 
   private
