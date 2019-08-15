@@ -12,6 +12,9 @@
         <li class="nav-item">
           <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= cl_image_tag(current_user.image, width: 40, height: 40, crop: :fill, :class => "avatar-bordered") %>
+        </li>
       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
@@ -20,9 +23,6 @@
           <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
         </li>
       <% end %>
-      <li class="nav-item">
-        <%= cl_image_tag(current_user.image, width: 40, height: 40, crop: :fill, :class => "avatar-bordered") %>
-      </li>
     </ul>
   </div>
 </div>
