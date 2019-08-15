@@ -7,15 +7,47 @@
   align-items: top;
   background: $dark;
   overflow: hidden;
+  border: solid 1px $white;
   img {
     height: 100%;
     width: 200px;
     object-fit: cover;
-  } .card-dashboard-body {
+  }
+  .card-dashboard-body {
+    width: 100%;
+    position: relative;
     padding: 16px;
+    p {
+      margin: 0;
+    }
+    .avatar-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      .avatar {
+        border: solid 1px $white;
+        width: 70px;
+      }
+    }
+    .buttons {
+      position: absolute;
+      bottom: 10px;
+      display: flex;
+      .btn {
+        margin-left: 10px;
+      }
+      .hide {
+        display: none;
+      }
+    }
+    .buttons-right {
+      right: 10px;
+    }
+    .buttons-left {
+      left: 10px;
+    }
   }
 }
-
 
 // .card-product h2 {
 //   font-size: 16px;

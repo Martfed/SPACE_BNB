@@ -22,6 +22,9 @@ body {
     width: 60vw;
     margin: 0;
     padding: 0;
+    .btn {
+      margin: 20px;
+    }
     .cards {
       display: flex;
       flex-wrap: wrap;
