@@ -14,9 +14,24 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.user = User.find(params[:user_id])
-    @booking.spaceship = Spaceship.find(params[:spaceship_id])
-    @booking.save
+    @booking.user_id = params[:user_id]
+    @booking.spaceship_id = params[:spaceship_id]
+    @start_date_ok = @booking.start_date >= Date.today
+    @end_date_ok = @booking.start_date <= @booking.end_date
+    @bookings = @booking.spaceship.bookings
+    @result = []
+    if @start_date_ok == true && @end_date_ok == true
+      @bookings.where.not(confirmation_status: "done").where.not(confirmation_status: "rejected").each do |booking|
+        @result << (@booking.start_date.between?(booking.start_date, booking.end_date) && @booking.end_date.between?(booking.start_date, booking.end_date))
+      end
+      if @result.include? true
+        raise
+      else
+        @booking.save
+      end
+    else
+      raise
+    end
     redirect_to user_spaceships_path
   end
 
