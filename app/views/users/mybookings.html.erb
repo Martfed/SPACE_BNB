@@ -14,7 +14,7 @@
           <p><%= booking.start_date %> - <%= booking.end_date %></p>
           <p>Status: <%= booking.confirmation_status %></p>
           <div class="buttons buttons-right">
-            <%= link_to "CANCEL", '#', class: "btn btn-main red-btn" %>
+            <%= link_to "CANCEL", user_reject_path(current_user, booking, stay: true), class: "btn btn-main red-btn" %>
             <%= link_to "CONTACT OWNER", '#', class: "btn btn-main" %>
           </div>
           <% if booking.confirmation_status == "done" %>

@@ -3,7 +3,7 @@
     <%= render 'shared/dashboardsidebar' %>
   </div>
   <div class= "dashboard-main">
-    <h2>Bookings to accept (with confirmation_status: pending)</h2>
+    <h2>Pending bookings requests:</h2>
     <% @spaceships.each do |spaceship| %>
       <% spaceship.bookings.where(confirmation_status: "pending").each do |booking| %>
         <div class="card-dashboard card-dashboard-body">
@@ -13,12 +13,12 @@
             <p><%= spaceship.name %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
             <p>status: <%= booking.confirmation_status %></p>
             <div class="avatar-container">
-              <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+              <%= cl_image_tag(booking.user.image, width: 75, height: 75, crop: :fill, :class => "avatar") %>
             </div>
             <div class="buttons buttons-left">
-              <%= link_to "ACCEPT", '#', class: "btn btn-main green-btn #{'hide' unless booking.confirmation_status == "pending"}" %>
-              <%= link_to "REJECT", '#', class: "btn btn-main red-btn #{'hide' unless booking.confirmation_status == "pending"}" %>
-              <%= link_to "CANCEL", '#', class: "btn btn-main red-btn #{'hide' unless booking.confirmation_status == "accepted"}" %>
+              <%= link_to "ACCEPT", user_accept_path(current_user, booking), class: "btn btn-main green-btn #{'hide' unless booking.confirmation_status == "pending"}" %>
+              <%= link_to "REJECT", user_reject_path(current_user, booking), class: "btn btn-main red-btn #{'hide' unless booking.confirmation_status == "pending"}" %>
+              <%= link_to "CANCEL", user_reject_path(current_user, booking), class: "btn btn-main red-btn #{'hide' unless booking.confirmation_status == "accepted"}" %>
             </div>
             <div class="buttons buttons-right">
               <%= link_to "CONTACT USER", '#', class: "btn btn-main" %>
@@ -57,12 +57,12 @@
                   <p><%= spaceship.name %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
                   <p>status: <%= booking.confirmation_status %></p>
                   <div class="avatar-container">
-                    <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+                    <%= cl_image_tag(booking.user.image, width: 75, height: 75, crop: :fill, :class => "avatar") %>
                   </div>
                   <div class="buttons buttons-left">
-                    <%= link_to "ACCEPT", '#', class: "btn btn-main green-btn #{'hide' unless booking.confirmation_status == "pending"}" %>
-                    <%= link_to "REJECT", '#', class: "btn btn-main red-btn #{'hide' unless booking.confirmation_status == "pending"}" %>
-                    <%= link_to "CANCEL", '#', class: "btn btn-main red-btn #{'hide' unless booking.confirmation_status == "accepted"}" %>
+                    <%= link_to "ACCEPT", user_accept_path(current_user, booking), class: "btn btn-main green-btn #{'hide' unless booking.confirmation_status == "pending"}" %>
+                    <%= link_to "REJECT", user_reject_path(current_user, booking), class: "btn btn-main red-btn #{'hide' unless booking.confirmation_status == "pending"}" %>
+                    <%= link_to "CANCEL", user_reject_path(current_user, booking), class: "btn btn-main red-btn #{'hide' unless booking.confirmation_status == "accepted"}" %>
                   </div>
                   <div class="buttons buttons-right">
                     <%= link_to "CONTACT USER", '#', class: "btn btn-main" %>
@@ -86,8 +86,8 @@
                     <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
                   </div>
                   <div class="buttons buttons-left">
-                    <%= link_to "ACCEPT", '#', class: "btn btn-main green-btn" %>
-                    <%= link_to "REJECT", '#', class: "btn btn-main red-btn" %>
+                    <%= link_to "ACCEPT", user_accept_path(current_user, booking), class: "btn btn-main green-btn" %>
+                    <%= link_to "REJECT", user_reject_path(current_user, booking), class: "btn btn-main red-btn" %>
                   </div>
                   <div class="buttons buttons-right">
                     <%= link_to "CONTACT USER", '#', class: "btn btn-main" %>
