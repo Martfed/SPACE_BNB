@@ -75,13 +75,13 @@ i = 0
 
 addresses = [
   'Kantersteen 12, 1000 Brussel',
-  'Duquesnoystraat 14, 1000 Brussel',
-  'Onderrichtsstraat 81, 1000 Brussel',
-  'Munt, 1000 Brussel',
-  'Kartuizersstraat 35, 1000 Brussel',
-  'Luxemburgplein 100, 1050 Brussel',
-  'Koningsstraat 236, 1210 Sint-Joost-ten-Node',
-  'Henegouwenkaai 41, 1080 Sint-Jans-Molenbeek',
+  'Tweedekkerstraat 126, 1130 Brussel',
+  'Sint-Lambertusstraat 200, 1200 Sint-Lambrechts-Woluwe',
+  'Boondaalsesteenweg 418, 1050 Elsene',
+  'Rogierlaan 51, 1030 Schaarbeek',
+  'Jean Joseph Crocqlaan 15, 1020 Brussel',
+  'Rue Edith Cavell &, Rue Marie Depage, 1180 Uccle',
+  'Wayezstraat 160-162, 1070 Anderlecht',
   'Ter Platen 12, 9000 Gent',
   'Gebroeders de Smetstraat 6, 9000 Gent'
 ]
@@ -107,7 +107,6 @@ addresses = [
 end
 
 puts "Invoking bookings..."
-
 spaceships = Spaceship.all
 
 30.times do
@@ -117,8 +116,10 @@ spaceships = Spaceship.all
     end_date:    date + rand(3..10).days,
     confirmation_status: %w(pending accepted rejected active done).sample,
     )
-  booking.spaceship = spaceships.sample
   booking.user = users.sample
+  spaceship = spaceships.sample
+  spaceship = spaceships.sample until !(booking.user.spaceships.include? spaceship)
+  booking.spaceship = spaceship
   booking.save
 end
 
@@ -131,8 +132,10 @@ puts "Invoking master user's bookings..."
     end_date:    date + rand(3..10).days,
     confirmation_status: %w(pending accepted rejected active done).sample,
     )
-  booking.spaceship = spaceships.sample
   booking.user = master_user
+  spaceship = spaceships.sample
+  spaceship = spaceships.sample until !(booking.user.spaceships.include? spaceship)
+  booking.spaceship = spaceship
   booking.save
 end
 
