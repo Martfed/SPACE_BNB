@@ -42,10 +42,19 @@
         <%= simple_form_for([current_user, @spaceship, Booking.new]) do |f| %>
           <%= f.input :start_date, as: :date, html5: true  %>
           <%= f.input :end_date, as: :date, html5: true  %>
-          <%= f.button :submit, class: "btn btn-main" %>
+          <div class="buttons">
+            <%= f.button :submit, class: "btn btn-main" %>
+          </div>
         <% end %>
+      <% else %>
+        <p>You need to be logged in to create a booking.</p>
+        <div class="buttons">
+          <%= link_to "LOGIN", new_user_session_path, class: "btn btn-main" %>
+          <%= link_to "REGISTER", new_user_registration_path, class: "btn btn-main" %>
+        </div>
       <% end %>
     </div>
+
 
     <div id = "reviews">
       <% @reviews.each do |review| %>
