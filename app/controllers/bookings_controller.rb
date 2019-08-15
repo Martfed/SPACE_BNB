@@ -8,6 +8,28 @@ class BookingsController < ApplicationController
   def update
   end
 
+  def accept
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.confirmation_status = "accepted"
+    if @booking.save
+      redirect_to user_dashboard_my_spaceships_bookings_path(current_user)
+    else
+      raise
+    end
+  end
+
+   def reject
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.confirmation_status = "rejected"
+    if @booking.save
+       params[:stay] ? (redirect_to user_dashboard_path(current_user)) : (redirect_to user_dashboard_my_spaceships_bookings_path(current_user))
+    else
+      raise
+    end
+  end
+
   def new
     @booking = Booking.new
     authorize @booking
