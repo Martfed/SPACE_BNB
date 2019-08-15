@@ -7,7 +7,17 @@
   <div class="dashboard-main">
     <h2>My Spaceships:</h2>
     <% @spaceships.each do |spaceship| %>
-      <p><%= spaceship.name %></p>
+      <div class="card-dashboard">
+        <%= cl_image_tag spaceship.image, width: 400, height: 300, crop: :fill %>
+        <div class="card-dashboard-body">
+          <h3><%= spaceship.name %></h3>
+          <div class="buttons buttons-right">
+            <%= link_to "BOOKINGS", '#', class: "btn btn-main" %>
+            <%= link_to "EDIT", '#', class: "btn btn-main" %>
+            <%= link_to "DELETE", '#', class: "btn btn-main red-btn" %>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 

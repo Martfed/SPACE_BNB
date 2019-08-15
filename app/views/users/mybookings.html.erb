@@ -14,6 +14,10 @@
           <h3><%= @spaceship.name %></h3>
           <p><%= booking.start_date %> - <%= booking.end_date %></p>
           <p>Status: <%= booking.confirmation_status %></p>
+          <div class="buttons buttons-right">
+            <%= link_to "CANCEL", '#', class: "btn btn-main red-btn" %>
+            <%= link_to "CONTACT USER", '#', class: "btn btn-main" %>
+          </div>
         </div>
       </div>
     <% end %>
