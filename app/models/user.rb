@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :species, presence: true
   validates :email, uniqueness: true
   validates :species, inclusion: { in: %w(Wookie Human Martian Mandalorian Droid Vulcan Borg Jedi Zetan Calaron) }
+
+  mount_uploader :image, PhotoUploader
 end

@@ -5,6 +5,8 @@
   </div>
 
   <div class="dashboard-main">
+    <%= cl_image_tag(@user.image, height: 300, width: 400, crop: :fill) %>
+
     <h2><%= @user.first_name %>'s Account</h2>
     <p>Find me in app/views/users/show.html.erb</p>
     <p> First name: <%= @user.first_name %> </p>

@@ -22,6 +22,8 @@
                     required: true %>
         <%= f.input :species, collection: %w(Wookie Human Martian Mandalorian Droid Vulcan Borg Jedi Zetan Calaron),
                     required: true %>
+        <%= f.input :image %>
+        <%= f.input :image_cache, as: :hidden %>
       </div>
 
     <div class="text-center">
