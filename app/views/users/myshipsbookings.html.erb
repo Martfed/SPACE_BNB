@@ -7,10 +7,12 @@
     <% @spaceships.each do |spaceship| %>
       <% spaceship.bookings.where(confirmation_status: "pending").each do |booking| %>
         <div class="card-dashboard card-dashboard-body">
-          <%= cl_image_tag spaceship.image, width: 400, height: 300, crop: :fill %>
+          <%= link_to user_spaceship_path(current_user, spaceship) do %>
+            <%= cl_image_tag spaceship.image, width: 400, height: 300, crop: :fill %>
+          <% end %>
           <div class="card-dashboard-body">
             <h3><%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </h3>
-            <p><%= spaceship.name %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
+            <p><%= link_to spaceship.name, user_spaceship_path(current_user, spaceship) %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
             <p>status: <%= booking.confirmation_status %></p>
             <div class="avatar-container">
               <%= cl_image_tag(booking.user.image, width: 75, height: 75, crop: :fill, :class => "avatar") %>
@@ -51,10 +53,12 @@
           <% @spaceships.each do |spaceship| %>
             <% spaceship.bookings.each do |booking| %>
               <div class="card-dashboard card-dashboard-body">
-                <%= cl_image_tag spaceship.image, width: 400, height: 300, crop: :fill %>
+                <%= link_to user_spaceship_path(current_user, spaceship) do %>
+                  <%= cl_image_tag spaceship.image, width: 400, height: 300, crop: :fill %>
+                <% end %>
                 <div class="card-dashboard-body">
                   <h3><%= booking.user.first_name %> <%= booking.user.last_name %> want to rent: </h3>
-                  <p><%= spaceship.name %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
+                  <p><%= link_to spaceship.name, user_spaceship_path(current_user, spaceship) %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
                   <p>status: <%= booking.confirmation_status %></p>
                   <div class="avatar-container">
                     <%= cl_image_tag(booking.user.image, width: 75, height: 75, crop: :fill, :class => "avatar") %>

@@ -6,11 +6,68 @@
 
   <div class="dashboard-main">
     <h2>Welcome <%= @user.first_name %>, these are your upcoming space trips:</h2>
-    <% @bookings.each do |booking| %>
+    <h3>Your current active trip:</h3>
+    <% @bookings.where(confirmation_status: 'active').each do |booking| %>
+      <% @spaceship = Spaceship.where(id: booking.spaceship_id)[0] %>
       <div class="card-dashboard">
-        <%= cl_image_tag booking.spaceship.image, width: 400, height: 300, crop: :fill %>
+        <%= link_to user_spaceship_path(@spaceship.user, @spaceship) do %>
+          <%= cl_image_tag @spaceship.image, width: 400, height: 300, crop: :fill %>
+        <% end %>
+        <div class="tag <%= booking.confirmation_status %>">
+          <p><%= booking.confirmation_status %></p>
+        </div>
         <div class="card-dashboard-body">
-          <h3><%= booking.spaceship.name %></h3>
+          <%= link_to user_spaceship_path(@spaceship.user, @spaceship) do %>
+            <h3><%= @spaceship.name %></h3>
+          <% end %>
+          <p><%= booking.start_date %> - <%= booking.end_date %></p>
+          <p>Status: <%= booking.confirmation_status %></p>
+          <div class="buttons buttons-right">
+            <%= link_to "CANCEL", user_reject_path(current_user, booking, stay: true), class: "btn btn-main red-btn" %>
+            <%= link_to "CONTACT OWNER", '#', class: "btn btn-main" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <h3>Pending requests:</h3>
+    <% @bookings.where(confirmation_status: 'pending').each do |booking| %>
+      <% @spaceship = Spaceship.where(id: booking.spaceship_id)[0] %>
+      <div class="card-dashboard">
+        <%= link_to user_spaceship_path(@spaceship.user, @spaceship) do %>
+          <%= cl_image_tag @spaceship.image, width: 400, height: 300, crop: :fill %>
+        <% end %>
+        <div class="tag <%= booking.confirmation_status %>">
+          <p><%= booking.confirmation_status %></p>
+        </div>
+        <div class="card-dashboard-body">
+          <%= link_to user_spaceship_path(@spaceship.user, @spaceship) do %>
+            <h3><%= @spaceship.name %></h3>
+          <% end %>
+          <p><%= booking.start_date %> - <%= booking.end_date %></p>
+          <p>Status: <%= booking.confirmation_status %></p>
+          <div class="buttons buttons-right">
+            <%= link_to "CANCEL", user_reject_path(current_user, booking, stay: true), class: "btn btn-main red-btn" %>
+            <%= link_to "CONTACT OWNER", '#', class: "btn btn-main" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <h3>Accepted requests:</h3>
+    <% @bookings.where(confirmation_status: 'accepted').each do |booking| %>
+      <% @spaceship = Spaceship.where(id: booking.spaceship_id)[0] %>
+      <div class="card-dashboard">
+        <%= link_to user_spaceship_path(@spaceship.user, @spaceship) do %>
+          <%= cl_image_tag @spaceship.image, width: 400, height: 300, crop: :fill %>
+        <% end %>
+        <div class="tag <%= booking.confirmation_status %>">
+          <p><%= booking.confirmation_status %></p>
+        </div>
+        <div class="card-dashboard-body">
+          <%= link_to user_spaceship_path(@spaceship.user, @spaceship) do %>
+            <h3><%= @spaceship.name %></h3>
+          <% end %>
           <p><%= booking.start_date %> - <%= booking.end_date %></p>
           <p>Status: <%= booking.confirmation_status %></p>
           <div class="buttons buttons-right">
@@ -43,6 +100,30 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <h3>Rejected requests:</h3>
+    <% @bookings.where(confirmation_status: 'rejected').each do |booking| %>
+      <% @spaceship = Spaceship.where(id: booking.spaceship_id)[0] %>
+      <div class="card-dashboard">
+        <%= link_to user_spaceship_path(@spaceship.user, @spaceship) do %>
+          <%= cl_image_tag @spaceship.image, width: 400, height: 300, crop: :fill %>
+        <% end %>
+        <div class="tag <%= booking.confirmation_status %>">
+          <p><%= booking.confirmation_status %></p>
+        </div>
+        <div class="card-dashboard-body">
+          <%= link_to user_spaceship_path(@spaceship.user, @spaceship) do %>
+            <h3><%= @spaceship.name %></h3>
+          <% end %>
+          <p><%= booking.start_date %> - <%= booking.end_date %></p>
+          <p>Status: <%= booking.confirmation_status %></p>
+          <div class="buttons buttons-right">
+            <%= link_to "CANCEL", user_reject_path(current_user, booking, stay: true), class: "btn btn-main red-btn" %>
+            <%= link_to "CONTACT OWNER", '#', class: "btn btn-main" %>
           </div>
         </div>
       </div>
