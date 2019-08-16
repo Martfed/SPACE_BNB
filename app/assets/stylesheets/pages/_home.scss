@@ -47,6 +47,31 @@ body {
     height: 100vh;
   }
 }
-#map {
 
+.top-5-container-div {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  .top-5-cards-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    .btn {
+      margin: 20px;
+    }
+    .top-5-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      a {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        .card {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
 }

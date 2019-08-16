@@ -1,10 +1,72 @@
+<div class="banner">
+  <div class="scroll-rocket">
+    <h1 class="slide-bottom"><i class="fas fa-rocket"></i></h1>
+  </div>
+  <div class="title">
+    <h1><i class="fas fa-rocket"></i></h1>
+    <h1> SpaceBNB</h1>
+    <h2>Rent a spaceship. Reach the stars.</h2>
+  </div>
+  <div class="top-5">
+    <% averages = [] %>
+    <% spaceships = @spaceships.sort_by do |spaceship|%>
+      <% ratings = [] %>
+      <% spaceship.bookings.each do |booking|%>
+        <% booking.reviews.each do |review| %>
+          <% ratings << review.rating %>
+        <% end %>
+      <% end %>
+      <% averages << average = (ratings.sum.to_f / ratings.length).round(2) %>
+      <% average %>
+    <% end %>
+    <h3>Our 5 most beloved spaceship:</h2>
+    <div class="container-div top-5-container-div">
+      <div class="cards-container top-5-cards-container">
+         <div class="cards top-5-cards">
+          <% i = 0 %>
+          <% averages = averages.sort.reverse %>
+          <% spaceships.reverse.first(5).each do |spaceship| %>
+            <%= link_to user_spaceship_path(spaceship.user, spaceship) do %>
+              <div class="card spaceship-card-small top-5-card" style="min-width: 120px;">
+                <div class="card-img-top" style="background-image: url(<%= cl_image_path spaceship.image, height: 100, crop: :fill %>); background-position: center">
+                  <div class="card-stars">
+                    <% averages[i].to_i.times do %>
+                      <i class="fas fa-star full-stars" id="reviews-full-stars"></i>
+                    <% end %>
+                    <% (5 - averages[i].to_i).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title"><%= spaceship.name %></h5>
+                </div>
+              </div>
+            <% end %>
+            <% i += 1 %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container-div">
   <div class="cards-container">
     <div class="cards">
-      <% @spaceships.each do |spaceship| %>
+      <% i = 0 %>
+      <% spaceships.reverse.each do |spaceship| %>
         <%= link_to user_spaceship_path(spaceship.user, spaceship) do %>
           <div class="card spaceship-card-small" style="min-width: 18rem;">
             <div class="card-img-top" style="background-image: url(<%= cl_image_path spaceship.image, height: 200, crop: :fill %>); background-position: center">
+              <div class="card-stars">
+                <% averages[i].to_i.times do %>
+                  <i class="fas fa-star full-stars" id="reviews-full-stars"></i>
+                <% end %>
+                <% (5 - averages[i].to_i).times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              </div>
             </div>
             <div class="card-body">
               <h5 class="card-title"><%= spaceship.name %></h5>
@@ -13,6 +75,7 @@
             </div>
           </div>
         <% end %>
+        <% i += 1 %>
       <% end %>
     </div>
     <% if user_signed_in? %>
