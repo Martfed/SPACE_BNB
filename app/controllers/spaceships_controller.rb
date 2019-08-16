@@ -28,6 +28,26 @@ class SpaceshipsController < ApplicationController
     end
     @message = params[:message]
     @reviews = @spaceship.reviews.order(created_at: :desc)
+    @one_star = []
+    @two_stars = []
+    @three_stars = []
+    @four_stars = []
+    @five_stars = []
+    @spaceship.bookings.each do |booking|
+      booking.reviews.each do |review|
+        if review.rating.to_i == 1
+          @one_star << review.rating.to_i
+        elsif review.rating.to_i == 2
+          @two_stars << review.rating.to_i
+        elsif review.rating.to_i == 3
+          @three_stars << review.rating.to_i
+        elsif review.rating.to_i == 4
+          @four_stars << review.rating.to_i
+        elsif review.rating.to_i == 5
+          @five_stars << review.rating.to_i
+        end
+      end
+    end
   end
 
   def new
