@@ -4,7 +4,7 @@ class SpaceshipsController < ApplicationController
 
   def index
     @spaceships = policy_scope(Spaceship).order(created_at: :desc)
-    # @spaceships = Spaceship.geocoded #returns flats with coordinates
+    # @spaceships = Spaceship.geocoded #returns spaceships with coordinates
 
     @markers = @spaceships.map do |spaceship|
       {

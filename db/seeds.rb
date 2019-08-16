@@ -160,15 +160,13 @@ puts "Pulling reviews out of my buttocks..."
 bookings = Booking.all
 
 bookings.each do |booking|
-  4.times do
-    date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
-    review = Review.create(
-      content:    Faker::TvShows::RickAndMorty.quote,
-      rating:     rand(3..5)
-      )
-    review.booking = bookings.sample
-    review.save
-  end
+  date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
+  review = Review.create(
+    content:    Faker::TvShows::RickAndMorty.quote,
+    rating:     rand(3..5)
+    )
+  review.booking = bookings.sample
+  review.save
 end
 
 puts "Pulling master user's reviews out of my buttocks..."
@@ -178,7 +176,7 @@ master_user.bookings.each do |booking|
     date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
     review = Review.create(
       content:    Faker::TvShows::RickAndMorty.quote,
-      rating:     rand(0..5)
+      rating:     rand(3..5)
       )
     review.booking = bookings.sample
     review.save
