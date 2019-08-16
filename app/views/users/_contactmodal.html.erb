@@ -1,0 +1,29 @@
+<div class="modal fade" id="contact-modal-<%=booking.user_id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contact Owner</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body d-flex align-items-center justify-content-between modal-contact">
+        <div>
+          <p>Enter your message for</p>
+          <p><%= booking.spaceship.user.first_name %> <%= booking.spaceship.user.last_name %></p>
+        </div>
+        <div>
+          <%= cl_image_tag(booking.spaceship.user.image, height: 56, width: 56, crop: :fill, class: "avatar-large") %>
+        </div>
+      </div>
+      <div class="modal-contact">
+        <%= simple_form_for([current_user, booking.spaceship, Review.new]) do |f| %>
+          <%= f.input :content, label: false %>
+          <button type="button" class="btn btn-main" data-dismiss="modal" aria-label="Close">Send Email
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
