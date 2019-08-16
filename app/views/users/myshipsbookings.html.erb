@@ -39,9 +39,9 @@
           Dropdown button
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" data-target="dropdown.allbookings">All bookings</a>
-          <a class="dropdown-item" data-target ="dropdown.pendingbookings">Pending bookgins</a>
           <a class="dropdown-item" data-target ="dropdown.acceptedbookings">Accepted bookings</a>
+          <a class="dropdown-item" data-target ="dropdown.allbookings">All bookings</a>
+          <a class="dropdown-item" data-target ="dropdown.pendingbookings">Pending bookgins</a>
           <a class="dropdown-item" data-target ="dropdown.rejectedbookings">Rejected bookings</a>
           <a class="dropdown-item" data-target ="dropdown.activebookings">Active bookings</a>
           <a class="dropdown-item" data-target ="dropdown.donebookings">Done bookings</a>
@@ -51,7 +51,7 @@
       <div id="results-position">
         <div data-target="dropdown.results_all_bookings">
           <% @spaceships.each do |spaceship| %>
-            <% spaceship.bookings.each do |booking| %>
+            <% spaceship.bookings.where(confirmation_status: "accepted").each do |booking| %>
               <div class="card-dashboard card-dashboard-body">
                 <%= link_to user_spaceship_path(current_user, spaceship) do %>
                   <%= cl_image_tag spaceship.image, width: 400, height: 300, crop: :fill %>
