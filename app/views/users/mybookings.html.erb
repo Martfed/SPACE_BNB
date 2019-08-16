@@ -25,7 +25,10 @@
           <p>Status: <%= booking.confirmation_status %></p>
           <div class="buttons buttons-right">
             <%= link_to "CANCEL", user_reject_path(current_user, booking, stay: true), class: "btn btn-main red-btn" %>
-            <%= link_to "CONTACT OWNER", '#', class: "btn btn-main" %>
+            <button type="button" class="btn btn-main btn-modal" data-toggle="modal" data-target="#contact-modal-<%=booking.user_id %>">
+              CONTACT OWNER
+            </button>
+            <%= render 'contactmodal', booking: booking %>
           </div>
         </div>
       </div>
@@ -49,7 +52,10 @@
           <p>Status: <%= booking.confirmation_status %></p>
           <div class="buttons buttons-right">
             <%= link_to "CANCEL", user_reject_path(current_user, booking, stay: true), class: "btn btn-main red-btn" %>
-            <%= link_to "CONTACT OWNER", '#', class: "btn btn-main" %>
+            <button type="button" class="btn btn-main btn-modal" data-toggle="modal" data-target="#contact-modal-<%=booking.user_id %>">
+              CONTACT OWNER
+            </button>
+            <%= render 'contactmodal', booking: booking %>
           </div>
         </div>
       </div>
@@ -73,7 +79,10 @@
           <p>Status: <%= booking.confirmation_status %></p>
           <div class="buttons buttons-right">
             <%= link_to "CANCEL", user_reject_path(current_user, booking, stay: true), class: "btn btn-main red-btn" %>
-            <%= link_to "CONTACT OWNER", '#', class: "btn btn-main" %>
+            <button type="button" class="btn btn-main btn-modal" data-toggle="modal" data-target="#contact-modal-<%=booking.user_id %>">
+              CONTACT OWNER
+            </button>
+            <%= render 'contactmodal', booking: booking %>
           </div>
         </div>
       </div>
@@ -97,7 +106,10 @@
           <p>Status: <%= booking.confirmation_status %></p>
           <div class="buttons buttons-right">
             <%= link_to "CANCEL", user_reject_path(current_user, booking, stay: true), class: "btn btn-main red-btn" %>
-            <%= link_to "CONTACT OWNER", '#', class: "btn btn-main" %>
+            <button type="button" class="btn btn-main btn-modal" data-toggle="modal" data-target="#contact-modal-<%=booking.user_id %>">
+              CONTACT OWNER
+            </button>
+            <%= render 'contactmodal', booking: booking %>
           </div>
         </div>
       </div>
