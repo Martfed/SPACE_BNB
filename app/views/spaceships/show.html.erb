@@ -13,24 +13,27 @@
     <div class="col-12 col-md-9">
       <div class="spaceship-presentation">
         <h2><%= @spaceship.name %></h2>
+        <%= no_ratings = nil %>
+        <% reviews = [] %>
         <% ratings = [] %>
         <% @spaceship.bookings.each do |booking|%>
-          <% if booking.reviews.length > 0 %>
-            <% booking.reviews.each do |review| %>
-              <% (ratings << review.rating) %>
-            <% end %>
-          <% else %>
-            <% ratings << 0 %>
+          <% reviews << booking.reviews.length %>
+          <% booking.reviews.each do |review| %>
+            <% ratings << review.rating.to_i %>
           <% end %>
         <% end %>
-        <% average = (ratings.sum / ratings.size).round(2) if ratings.size > 0 %>
-        <p>Average rating:
+        <% if reviews.sum > 0 %>
+          <% average = (ratings.sum / ratings.size).round(2) if ratings.size > 0 %>
+          <p>Average rating: <%= no_ratings %>
           <% average.times do %>
             <i class="fas fa-star" id="reviews-full-stars"></i>
           <% end %>
           <% (5 - average).times do %>
             <i class="far fa-star"></i>
           <% end %>
+        <% else %>
+          <p>Average Rating: No existing reviews yet</p>
+        <% end %>
         </p>
         <p>Capacity: <%= @spaceship.capacity %></p>
 
