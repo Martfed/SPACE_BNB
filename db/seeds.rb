@@ -164,7 +164,7 @@ bookings.each do |booking|
     date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
     review = Review.create(
       content:    Faker::TvShows::RickAndMorty.quote,
-      rating:     rand(0..5)
+      rating:     rand(3..5)
       )
     review.booking = bookings.sample
     review.save
@@ -184,6 +184,5 @@ master_user.bookings.each do |booking|
     review.save
   end
 end
-
 
 puts "Finished"

@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :mybookings]
+  before_action :set_user, only: [:edit, :show, :mybookings, :addareview, :myshipsbookings, :myships]
 
   def show
     authorize @user
   end
 
   def edit
-    @user = User.find(params[:id])
     authorize @user
   end
 
@@ -27,13 +26,16 @@ class UsersController < ApplicationController
   end
 
   def myships
-    @user = User.find(params[:user_id])
     authorize @user
     @spaceships = @user.spaceships
   end
 
   def myshipsbookings
-    @user = User.find(params[:user_id])
+    authorize @user
+    @spaceships = @user.spaceships
+  end
+
+  def addareview
     authorize @user
     @spaceships = @user.spaceships
   end

@@ -28,4 +28,8 @@ class UserPolicy < ApplicationPolicy
   def myshipsbookings?
     true
   end
+
+  def addareview?
+    true
+  end
 end

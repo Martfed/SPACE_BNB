@@ -3,3 +3,54 @@
   background-position: center;
   padding: 150px 0;
 }
+
+.banner {
+  position: relative;
+  height: calc(100vh - 56px);
+  .title {
+    height: calc(100vh - 56px - 300px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      margin: 0;
+      .fas {
+        font-size: 2em;
+      }
+    }
+    h2 {
+      margin-top: 8px;
+    }
+  }
+  .top-5 {
+    padding: 0 150px;
+    text-align: center;
+    height: 300px;
+  }
+}
+
+.scroll-rocket {
+    position: absolute;
+    color: $light;
+    top: 20px;
+    right: 20px;
+    height: calc(100vh - 56px - 20px);
+    .fas {
+      transform: rotate(135deg);
+    }
+}
+
+.slide-bottom {
+  animation: slide-bottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+}
+@keyframes slide-bottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(100vh - 56px));
+  }
+}
+
+
