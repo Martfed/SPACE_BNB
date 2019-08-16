@@ -5,16 +5,39 @@
   </div>
 
   <div class="dashboard-main">
-    <%= cl_image_tag(@user.image, height: 300, width: 400, crop: :fill) %>
 
-    <h2><%= @user.first_name %>'s Account</h2>
-    <p>Find me in app/views/users/show.html.erb</p>
-    <p> First name: <%= @user.first_name %> </p>
-    <p> Last name: <%= @user.last_name %> </p>
-    <p> Species: <%= @user.species %> </p>
-    <p> Email: <%= @user.email %> </p>
-    <p> Payment info: <%= @user.payment_info %> </p>
+    <div class="card-account">
+      <div class="account-headline row">
+        <div class="account-body col-12 col-md-7">
+          <h2><%= @user.first_name %>'s Account</h2>
+          <div class="account-info">
+            <p class="info">First name:</p>
+            <p><%= @user.first_name %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">Last name:</p>
+            <p><%= @user.last_name %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">Species:</p>
+            <p><%= @user.species %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">Email:</p>
+            <p><%= @user.email %></p>
+          </div>
+          <div class="account-info">
+            <p class="info">Payment info:</p>
+            <p><%= @user.payment_info %></p>
+          </div>
     <%= link_to "Edit my profile", edit_user_path(current_user), class: "btn btn-main" %>
+        </div>
+        <div class="account-pic col-12 col-md-5">
+          <%= cl_image_tag(@user.image, height: 200, width: 200, crop: :fill, class: "avatar-account") %>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
