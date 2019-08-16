@@ -52,7 +52,7 @@ class BookingsController < ApplicationController
         assign_message("A spaceship is already booked for that period!")
       else
         @booking.save
-        assign_message("Your booking was confirmed!")
+        assign_message("Your booking was confirmed! Find out on your dashboard when the owner confirms the booking.")
       end
     else
       assign_message("Please enter a valid date range")

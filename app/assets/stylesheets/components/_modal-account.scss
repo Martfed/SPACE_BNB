@@ -1,6 +1,8 @@
 .modal-content {
-  color: $dark;
+  border: solid 1px $white;
+  color: $white;
   border-radius: 10px;
+  background-color: $dark;
 }
 
 .modal-body {
@@ -8,4 +10,8 @@
   img {
     margin-bottom: 20px;
   }
+}
+
+.modal-contact {
+  width: 300px;
 }

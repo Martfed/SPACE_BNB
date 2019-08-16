@@ -16,7 +16,6 @@
             <h3><%= spaceship.name %></h3>
           <% end %>
           <div class="buttons buttons-right">
-            <%= link_to "BOOKINGS", '#', class: "btn btn-main" %>
             <%= link_to "EDIT", edit_user_spaceship_path(current_user, spaceship), class: "btn btn-main" %>
             <%= link_to "DELETE", user_spaceship_path(current_user, spaceship),
               method: :delete,
