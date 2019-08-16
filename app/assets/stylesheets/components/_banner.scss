@@ -33,9 +33,9 @@
 .scroll-rocket {
     position: absolute;
     color: $light;
-    top: 20px;
+    bottom: 20px;
     right: 20px;
-    height: calc(100vh - 56px - 20px);
+    height: 50px;
     .fas {
       transform: rotate(135deg);
     }
