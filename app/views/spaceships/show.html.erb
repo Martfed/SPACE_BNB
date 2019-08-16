@@ -48,13 +48,14 @@
           height: 300px;"
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
+        <div class="button-container">
           <%= link_to "Back", root_path, class: "btn btn-main" %>
           <% if policy(@spaceship).edit? %>
             <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
             <%= link_to "Delete", user_spaceship_path(current_user, @spaceship), method: :delete,
               data: { confirm: "Are you sure?" }, class: "btn btn-main" %>
           <% end %>
+          </div>
        </div>
     </div>
 
