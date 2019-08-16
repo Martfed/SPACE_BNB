@@ -5,6 +5,7 @@
   </div>
 
   <div class="dashboard-main">
+
     <h2>Welcome <%= @user.first_name %>, these are your upcoming space trips:</h2>
     <h3>Your current active trip:</h3>
     <% @bookings.where(confirmation_status: 'active').each do |booking| %>
