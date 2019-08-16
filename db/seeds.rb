@@ -185,5 +185,4 @@ master_user.bookings.each do |booking|
   end
 end
 
-
 puts "Finished"
