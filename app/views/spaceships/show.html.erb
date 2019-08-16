@@ -58,15 +58,23 @@
 
     <div id = "reviews">
       <% @reviews.each do |review| %>
-        <p>Name: <%= review.booking.user.first_name %> <%= review.booking.user.last_name %></p>
-        <p>content: <%= review.content %> </p>
-        <p>rating:
-          <% review.rating.times do %>
-            <i class="fas fa-star" id="reviews-full-stars"></i>
-          <% end %>
-          <% (5 - review.rating).times do %>
-            <i class="far fa-star"></i>
-          <% end %>
+        <div class ="review-display">
+          <div class="avatar-container">
+            <%= cl_image_tag(review.booking.user.image, width: 75, height: 75, crop: :fill, :class => "avatar") %>
+          </div>
+          <p><%= review.booking.user.first_name %> <br> <%= review.booking.user.last_name %></p>
+          <div class="review-content">
+            <p><span>Rating:</span>
+              <% review.rating.times do %>
+                <i class="fas fa-star" id="reviews-full-stars"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </p>
+            <p><span>Content:</span> <%= review.content %> </p>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
