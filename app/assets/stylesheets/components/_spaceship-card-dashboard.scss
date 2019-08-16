@@ -1,4 +1,5 @@
 .card-dashboard {
+  position: relative;
   height: 180px;
   border-radius: 10px;
   margin: 10px 25px;
@@ -8,10 +9,13 @@
   background: $dark;
   overflow: hidden;
   border: solid 1px $white;
-  img {
+  a {
     height: 100%;
-    width: 200px;
-    object-fit: cover;
+    img {
+      height: 100%;
+      width: 200px;
+      object-fit: cover;
+    }
   }
   .card-dashboard-body {
     width: 100%;
@@ -19,6 +23,9 @@
     padding: 16px;
     p {
       margin: 0;
+    }
+    a {
+      color: $white;
     }
     .avatar-container {
       position: absolute;
@@ -45,6 +52,30 @@
     }
     .buttons-left {
       left: 10px;
+    }
+  }
+  .tag {
+    position: absolute;
+    display: inline-block;
+    bottom: 10px;
+    left: 10px;
+    padding: 5px 15px;
+    background-color: $red;
+    border-radius: 20px;
+    p {
+      margin: 0;
+    }
+    &.pending {
+     background-color: $strong;
+    }
+    &.accepted {
+      background-color: $green;
+    }
+    &.active {
+      background-color: $green;
+    }
+    &.done {
+      background-color: $strong;
     }
   }
 }

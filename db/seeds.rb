@@ -86,7 +86,7 @@ images = [
   'https://res.cloudinary.com/di1eyazrv/image/upload/v1565708334/spaceship06_dszz5r.jpg'
 ]
 
-names = ['Milennium Falcon', 'Space Shuttle', 'The Mandalorian Arrow', 'Schiaparelli', 'Corvette', 'Enterprise', 'T-wing', 'Federican Pooface', 'Frankurian Rocket', 'Emoji Carriage']
+names = ['Milennium Falcon', 'Space Shuttle', 'The Mandalorian Arrow', 'Schiaparelli', 'Corvette', 'Enterprise', 'C-wing', 'Federican Pooface', 'Frankurian Rocket', 'Emoji Carriage']
 i = 0
 
 addresses = [
@@ -164,7 +164,7 @@ bookings.each do |booking|
     date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
     review = Review.create(
       content:    Faker::TvShows::RickAndMorty.quote,
-      rating:     rand(0..5)
+      rating:     rand(3..5)
       )
     review.booking = bookings.sample
     review.save
