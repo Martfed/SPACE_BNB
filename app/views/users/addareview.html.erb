@@ -1,17 +1,15 @@
 
-<p data-controller= "review" id="review-message">
-    <%= @review_message %>
-</p>
-
-
-<div class="dashboard-container" data-index="0">
+<div class="dashboard-container" data-index="4">
 
   <div class="sidebar">
     <%= render 'shared/dashboardsidebar' %>
   </div>
 
   <div class="dashboard-main">
-    <h1>Drop a Review</h1>
+    <p data-controller= "review" id="review-message">
+        <%= @review_message %>
+    </p>
+    <h2>Drop a Review</h2>
     <% @user.bookings.where(confirmation_status: "done").each do |booking| %>
       <div class="card-dashboard">
         <%= cl_image_tag booking.spaceship.image, width: 400, height: 300, crop: :fill %>
