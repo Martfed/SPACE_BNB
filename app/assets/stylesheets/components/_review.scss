@@ -1,0 +1,36 @@
+#reviews-full-stars {
+  color: $strong;
+}
+
+#reviews {
+  width: 80%;
+  height: 40em;
+  overflow: scroll;
+  img {
+    width: 75px;
+  }
+}
+
+.review-display {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3%;
+  > p {
+    width: 10%;
+  }
+}
+
+.review-content {
+  width: 100%;
+  padding: 1%;
+  margin-left: 5%;
+  border: 1px solid rgba(0, 157, 164, 0.2);
+  border-radius: 5px;
+  span {
+    font-weight: 600;
+  }
+}
+
+.avatar-container {
+  margin-right: 2%;
+}

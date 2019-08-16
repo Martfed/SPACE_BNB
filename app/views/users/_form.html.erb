@@ -1,0 +1,14 @@
+<div class="row  justify-content-center">
+  <div class="col-12 col-sm-8 col-md-6 space-form">
+    <%= simple_form_for(current_user) do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :species, collection: %w(Wookie Human Martian Mandalorian Droid Vulcan Borg Jedi Zetan Calaron) %>
+      <%= f.input :email %>
+      <%= f.input :payment_info %>
+      <%= f.input :image %>
+      <%= f.input :image_cache, as: :hidden %>
+      <%= f.button :submit, class: 'btn btn-main' %>
+    <% end %>
+  </div>
+</div>

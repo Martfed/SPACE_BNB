@@ -1,0 +1,15 @@
+#review-message {
+  background-color: $green;
+  text-align: center;
+  padding: 1%;
+  font-size: 20px;
+  font-weight: 600;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0s opacity ease-in, 0.2s visibility ease-out;
+}
+
+.visible {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
