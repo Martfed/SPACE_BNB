@@ -45,8 +45,7 @@
           height: 300px;"
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-          <h3>Pictures</h3>
-          <p>TO DO</p>
+
           <%= link_to "Back", root_path, class: "btn btn-main" %>
           <% if policy(@spaceship).edit? %>
             <%= link_to "Edit", edit_user_spaceship_path(current_user, @spaceship), class: "btn btn-main" %>
