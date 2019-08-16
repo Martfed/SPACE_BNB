@@ -59,8 +59,8 @@
     <div class="booking-form calendar col-12 col-md-3" id="booking-form-ship">
       <% if user_signed_in? %>
         <%= simple_form_for([current_user, @spaceship, Booking.new]) do |f| %>
-          <%= f.input :start_date, as: :date, html5: true  %>
-          <%= f.input :end_date, as: :date, html5: true  %>
+          <%= f.input :start_date, class: "daterange"  %>
+          <%= f.input :end_date, class: "daterange"  %>
           <div class="buttons">
             <%= f.button :submit, class: "btn btn-main" %>
           </div>
@@ -73,6 +73,12 @@
         </div>
       <% end %>
     </div>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('input[class="daterange"]').daterangepicker();
+    });
+    </script>
 
 
     <div id = "reviews">
