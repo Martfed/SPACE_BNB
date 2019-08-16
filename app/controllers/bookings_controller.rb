@@ -19,12 +19,12 @@ class BookingsController < ApplicationController
     end
   end
 
-   def reject
+  def reject
     @booking = Booking.find(params[:id])
     authorize @booking
     @booking.confirmation_status = "rejected"
     if @booking.save
-       params[:stay] ? (redirect_to user_dashboard_path(current_user)) : (redirect_to user_dashboard_my_spaceships_bookings_path(current_user))
+      params[:stay] ? (redirect_to user_dashboard_path(current_user)) : (redirect_to user_dashboard_my_spaceships_bookings_path(current_user))
     else
       raise
     end

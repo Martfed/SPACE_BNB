@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   def addareview
     authorize @user
     @spaceships = @user.spaceships
+    @review_message = params[:message]
   end
 
   private
@@ -38,5 +39,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:user_id])
   end
-
 end
