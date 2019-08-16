@@ -96,7 +96,7 @@ addresses = [
   'Boondaalsesteenweg 418, 1050 Elsene',
   'Rogierlaan 51, 1030 Schaarbeek',
   'Jean Joseph Crocqlaan 15, 1020 Brussel',
-  'Rue Edith Cavell &, Rue Marie Depage, 1180 Uccle',
+  'Rue Marie Depage 1, 1180 Uccle',
   'Wayezstraat 160-162, 1070 Anderlecht',
   'Ter Platen 12, 9000 Gent',
   'Gebroeders de Smetstraat 6, 9000 Gent'
@@ -125,23 +125,25 @@ end
 puts "Invoking bookings..."
 spaceships = Spaceship.all
 
-30.times do
-  date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
-  booking = Booking.create(
-    start_date:  date,
-    end_date:    date + rand(3..10).days,
-    confirmation_status: %w(pending accepted rejected active done).sample,
-    )
-  booking.user = users.sample
-  spaceship = spaceships.sample
-  spaceship = spaceships.sample until !(booking.user.spaceships.include? spaceship)
-  booking.spaceship = spaceship
-  booking.save
+spaceships.each do |spaceship|
+  5.times do
+    date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
+    booking = Booking.create(
+      start_date:  date,
+      end_date:    date + rand(3..10).days,
+      confirmation_status: %w(pending accepted rejected active done).sample,
+      )
+    booking.spaceship = spaceship
+    user = users.sample
+    user = users.sample until booking.spaceship.user != user
+    booking.user = user
+    booking.save
+  end
 end
 
 puts "Invoking master user's bookings..."
 
-10.times do
+5.times do
   date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
   booking = Booking.create(
     start_date:  date,
@@ -172,15 +174,13 @@ end
 puts "Pulling master user's reviews out of my buttocks..."
 
 master_user.bookings.each do |booking|
-  4.times do
-    date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
-    review = Review.create(
-      content:    Faker::TvShows::RickAndMorty.quote,
-      rating:     rand(3..5)
-      )
-    review.booking = bookings.sample
-    review.save
-  end
+  date = Faker::Date.between(from: Date.today, to: 1.year.from_now)
+  review = Review.create(
+    content:    Faker::TvShows::RickAndMorty.quote,
+    rating:     rand(3..5)
+    )
+  review.booking = bookings.sample
+  review.save
 end
 
 puts "Finished"
