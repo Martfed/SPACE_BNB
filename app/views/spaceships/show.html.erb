@@ -13,9 +13,9 @@
     <div class="col-12 col-md-9">
       <div class="spaceship-presentation">
         <h2><%= @spaceship.name %></h2>
-        <%= no_ratings = nil %>
         <% reviews = [] %>
         <% ratings = [] %>
+        <% no_ratings = nil %>
         <% @spaceship.bookings.each do |booking|%>
           <% reviews << booking.reviews.length %>
           <% booking.reviews.each do |review| %>
@@ -76,28 +76,88 @@
       <% end %>
     </div>
 
-
-    <div id = "reviews">
-      <h3>Reviews (<%= @reviews.length %>)</h3>
-      <% @reviews.each do |review| %>
-        <div class ="review-display">
-          <div class="avatar-container">
-            <%= cl_image_tag(review.booking.user.image, width: 75, height: 75, crop: :fill, :class => "avatar") %>
+    <div>
+      <div>
+        <h3>Reviews (<%= @reviews.length %>)</h3>
+        <div>
+          <div class = "review-graph">
+            <% (@five_stars.length).times do %>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @five_stars.length).times do %>
+              <div class = "review-empty"></div>
+            <% end %>
+            <div>
+              <p><%= @five_stars.length %> <% 5.times do %> <i class="fas fa-star" id="reviews-full-stars"></i> <% end %></p>
+            </div>
           </div>
-          <p><%= review.booking.user.first_name %> <br> <%= review.booking.user.last_name %></p>
-          <div class="review-content">
-            <p><span>Rating:</span>
-              <% review.rating.times do %>
-                <i class="fas fa-star" id="reviews-full-stars"></i>
-              <% end %>
-              <% (5 - review.rating).times do %>
-                <i class="far fa-star"></i>
-              <% end %>
-            </p>
-            <p><span>Content:</span> <%= review.content %> </p>
+          <div class = "review-graph">
+            <% @four_stars.length.times do %>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @four_stars.length).times do %>
+              <div class = "review-empty"></div>
+            <% end %>
+            <div>
+              <p><%= @four_stars.length %> <% 4.times do %> <i class="fas fa-star" id="reviews-full-stars"></i> <% end %></p>
+            </div>
+          </div>
+          <div class = "review-graph">
+            <% @three_stars.length.times do %>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @three_stars.length).times do %>
+              <div class = "review-empty"></div>
+            <% end %>
+            <div>
+              <p><%= @three_stars.length %> <% 3.times do %> <i class="fas fa-star" id="reviews-full-stars"></i> <% end %></p>
+            </div>
+          </div>
+          <div class = "review-graph">
+            <% @two_stars.length.times do %>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @two_stars.length).times do %>
+              <div class = "review-empty"></div>
+            <% end %>
+            <div>
+              <p><%= @two_stars.length %> <% 2.times do %> <i class="fas fa-star" id="reviews-full-stars"></i> <% end %></p>
+            </div>
+          </div>
+          <div class = "review-graph">
+            <% @one_star.length.times do %>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @one_star.length).times do %>
+              <div class = "review-empty"></div>
+            <% end %>
+            <div>
+              <p><%= @one_star.length %> <i class="fas fa-star" id="reviews-full-stars"></i></p>
+            </div>
           </div>
         </div>
-      <% end %>
+      </div>
+      <div id = "reviews">
+        <% @reviews.each do |review| %>
+          <div class ="review-display">
+            <div class="avatar-container">
+              <%= cl_image_tag(review.booking.user.image, width: 75, height: 75, crop: :fill, :class => "avatar") %>
+            </div>
+            <p><%= review.booking.user.first_name %> <br> <%= review.booking.user.last_name %></p>
+            <div class="review-content">
+              <p><span>Rating:</span>
+                <% review.rating.times do %>
+                  <i class="fas fa-star" id="reviews-full-stars"></i>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              </p>
+              <p><span>Content:</span> <%= review.content %> </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
