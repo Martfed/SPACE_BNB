@@ -186,4 +186,4 @@ master_user.bookings.each do |booking|
 end
 
 
-puts "Finished"
+puts "Edouard is an ass"
