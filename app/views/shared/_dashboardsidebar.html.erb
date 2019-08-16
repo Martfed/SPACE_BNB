@@ -20,6 +20,9 @@
       <li class="sidebar-tab" data-target="tab.bar">Spaceship bookings</li>
     <% end %>
 
+    <%= link_to user_dashboard_add_review_path(current_user) do %>
+      <li class="sidebar-tab" data-target="tab.bar">Add a review</li>
+    <% end %>
   </ul>
 </div>
 
