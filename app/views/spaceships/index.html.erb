@@ -9,6 +9,7 @@
   </div>
   <div class="top-5">
     <% averages = [] %>
+    <%= puts @spaceships.length %>
     <% spaceships = @spaceships.sort_by do |spaceship|%>
       <% ratings = [] %>
       <% spaceship.bookings.each do |booking|%>
@@ -16,7 +17,8 @@
           <% ratings << review.rating %>
         <% end %>
       <% end %>
-      <% averages << average = (ratings.sum.to_f / ratings.length).round(2) %>
+      <% average = 3 %>
+      <% averages << average = (ratings.sum / ratings.size).round(2) if ratings.size > 0 %>
       <% average %>
     <% end %>
     <h3>Our 5 most beloved spaceships:</h2>
