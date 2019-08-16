@@ -6,14 +6,14 @@
   justify-content: space-between;
   height: 70px;
   padding: 0px 50px;
-  color: $light;
+  color: $lighter;
 }
 .footer-links {
   display: flex;
   align-items: center;
 }
 .footer-links a {
-  color: $light;
+  color: $lighter;
   opacity: 0.85;
   text-decoration: none;
   font-size: 24px;
@@ -21,7 +21,4 @@
 }
 .footer-links a:hover {
   opacity: 1;
-}
-.footer .fa-heart {
-  color: #D23333;
 }
