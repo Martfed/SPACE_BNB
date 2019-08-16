@@ -80,8 +80,11 @@
         <h3>Reviews (<%= @reviews.length %>)</h3>
         <div>
           <div class = "review-graph">
-            <% @five_stars.length.times do %>
-              <div class = "review-filled"></div>
+            <% (@five_stars.length).times do %>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @five_stars.length).times do %>
+              <div class = "review-empty"></div>
             <% end %>
             <div>
               <p><%= @five_stars.length %> <% 5.times do %> <i class="fas fa-star" id="reviews-full-stars"></i> <% end %></p>
@@ -89,7 +92,10 @@
           </div>
           <div class = "review-graph">
             <% @four_stars.length.times do %>
-              <div class = "review-filled"></div>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @four_stars.length).times do %>
+              <div class = "review-empty"></div>
             <% end %>
             <div>
               <p><%= @four_stars.length %> <% 4.times do %> <i class="fas fa-star" id="reviews-full-stars"></i> <% end %></p>
@@ -97,7 +103,10 @@
           </div>
           <div class = "review-graph">
             <% @three_stars.length.times do %>
-              <div></div>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @three_stars.length).times do %>
+              <div class = "review-empty"></div>
             <% end %>
             <div>
               <p><%= @three_stars.length %> <% 3.times do %> <i class="fas fa-star" id="reviews-full-stars"></i> <% end %></p>
@@ -105,7 +114,10 @@
           </div>
           <div class = "review-graph">
             <% @two_stars.length.times do %>
-              <div></div>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @two_stars.length).times do %>
+              <div class = "review-empty"></div>
             <% end %>
             <div>
               <p><%= @two_stars.length %> <% 2.times do %> <i class="fas fa-star" id="reviews-full-stars"></i> <% end %></p>
@@ -113,7 +125,10 @@
           </div>
           <div class = "review-graph">
             <% @one_star.length.times do %>
-              <div></div>
+              <span class = "review-filled"></span>
+            <% end %>
+            <% (@reviews.length - @one_star.length).times do %>
+              <div class = "review-empty"></div>
             <% end %>
             <div>
               <p><%= @one_star.length %> <i class="fas fa-star" id="reviews-full-stars"></i></p>
