@@ -12,13 +12,15 @@
     <h2>Drop a Review</h2>
     <% @user.bookings.where(confirmation_status: "done").each do |booking| %>
       <div class="card-dashboard">
-        <%= cl_image_tag booking.spaceship.image, width: 400, height: 300, crop: :fill %>
+        <%= link_to user_spaceship_path(booking.spaceship.user, booking.spaceship) do %>
+          <%= cl_image_tag booking.spaceship.image, width: 400, height: 300, crop: :fill %>
+        <% end %>
         <div class="card-dashboard-body">
           <h3><%= booking.spaceship.name %></h3>
           <p><%= booking.start_date %> - <%= booking.end_date %></p>
           <p>Status: <%= booking.confirmation_status %></p>
-          <div class="buttons buttons-left">
-            <button type="button" class="btn btn-main buttons buttons-left" data-toggle="modal" data-target="#modal-<%=booking.spaceship.id %>">
+          <div class="buttons buttons-right">
+            <button type="button" class="btn btn-main buttons buttons-right" data-toggle="modal" data-target="#modal-<%=booking.spaceship.id %>">
               REVIEW
             </button>
           </div>
